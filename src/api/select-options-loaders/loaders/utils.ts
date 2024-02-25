@@ -11,6 +11,7 @@ export const serializeSelectorData = <T extends { id: string }>({
   hasMorePages,
   items,
 }: SerializeSelectorDataProps<T>): LoaderResult<T> => ({
+  hasMore: hasMorePages,
   nextPage: hasMorePages ? currentPage + 1 : 0,
   items,
 });

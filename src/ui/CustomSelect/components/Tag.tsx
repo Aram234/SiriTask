@@ -13,7 +13,7 @@ function TagBase<T extends TagOption>(props: TagProps<T>) {
 
   return (
     <div {...other}>
-      <span>{option.title}</span>
+      <span>{option.name}</span>
       {isSelected && <CloseIcon onClick={onDelete} />}
     </div>
   );

@@ -1,4 +1,5 @@
 import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
+import { FieldPolicy, FieldReadFunction, TypePolicies, TypePolicy } from '@apollo/client/cache';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -12085,3 +12086,3170 @@ export type ApplicantIndividualCompanyRelationsQuery = { __typename?: 'Query', r
 
 export const ApplicantIndividualCompanyPositionsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ApplicantIndividualCompanyPositions"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"page"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"first"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"filter"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"QueryApplicantIndividualCompanyPositionsFilterFilterConditions"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"orderBy"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"QueryApplicantIndividualCompanyPositionsOrderByOrderByClause"}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"result"},"name":{"kind":"Name","value":"applicantIndividualCompanyPositions"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"page"},"value":{"kind":"Variable","name":{"kind":"Name","value":"page"}}},{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"Variable","name":{"kind":"Name","value":"first"}}},{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"Variable","name":{"kind":"Name","value":"filter"}}},{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"Variable","name":{"kind":"Name","value":"orderBy"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","name":{"kind":"Name","value":"paginatorInfo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"hasMorePages"}},{"kind":"Field","name":{"kind":"Name","value":"currentPage"}}]}}]}}]}}]} as unknown as DocumentNode<ApplicantIndividualCompanyPositionsQuery, ApplicantIndividualCompanyPositionsQueryVariables>;
 export const ApplicantIndividualCompanyRelationsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ApplicantIndividualCompanyRelations"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"page"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"first"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"filter"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"QueryApplicantIndividualCompanyRelationsFilterFilterConditions"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"orderBy"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"QueryApplicantIndividualCompanyRelationsOrderByOrderByClause"}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"result"},"name":{"kind":"Name","value":"applicantIndividualCompanyRelations"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"page"},"value":{"kind":"Variable","name":{"kind":"Name","value":"page"}}},{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"Variable","name":{"kind":"Name","value":"first"}}},{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"Variable","name":{"kind":"Name","value":"filter"}}},{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"Variable","name":{"kind":"Name","value":"orderBy"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","name":{"kind":"Name","value":"paginatorInfo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"hasMorePages"}},{"kind":"Field","name":{"kind":"Name","value":"currentPage"}}]}}]}}]}}]} as unknown as DocumentNode<ApplicantIndividualCompanyRelationsQuery, ApplicantIndividualCompanyRelationsQueryVariables>;
+export type AccountKeySpecifier = ('account_name' | 'account_number' | 'account_state' | 'account_type' | 'activated_at' | 'client' | 'client_accounts' | 'commission_template' | 'company' | 'created_at' | 'currency' | 'group' | 'group_type' | 'iban_provider' | 'id' | 'is_primary' | 'last_charge_at' | 'max_limit_balance' | 'member' | 'min_limit_balance' | 'owner' | 'payment_bank' | 'payment_provider' | 'payment_system' | 'updated_at' | AccountKeySpecifier)[];
+export type AccountFieldPolicy = {
+	account_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	account_number?: FieldPolicy<any> | FieldReadFunction<any>,
+	account_state?: FieldPolicy<any> | FieldReadFunction<any>,
+	account_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	activated_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	client?: FieldPolicy<any> | FieldReadFunction<any>,
+	client_accounts?: FieldPolicy<any> | FieldReadFunction<any>,
+	commission_template?: FieldPolicy<any> | FieldReadFunction<any>,
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	currency?: FieldPolicy<any> | FieldReadFunction<any>,
+	group?: FieldPolicy<any> | FieldReadFunction<any>,
+	group_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	iban_provider?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_primary?: FieldPolicy<any> | FieldReadFunction<any>,
+	last_charge_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	max_limit_balance?: FieldPolicy<any> | FieldReadFunction<any>,
+	member?: FieldPolicy<any> | FieldReadFunction<any>,
+	min_limit_balance?: FieldPolicy<any> | FieldReadFunction<any>,
+	owner?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_bank?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_provider?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_system?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type AccountClientKeySpecifier = ('client' | 'id' | AccountClientKeySpecifier)[];
+export type AccountClientFieldPolicy = {
+	client?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type AccountGenerateIbanResponseKeySpecifier = ('message' | 'status' | AccountGenerateIbanResponseKeySpecifier)[];
+export type AccountGenerateIbanResponseFieldPolicy = {
+	message?: FieldPolicy<any> | FieldReadFunction<any>,
+	status?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type AccountLimitKeySpecifier = ('account' | 'account_id' | 'amount' | 'commission_template_limit_action_type' | 'commission_template_limit_action_type_id' | 'commission_template_limit_period' | 'commission_template_limit_period_id' | 'commission_template_limit_transfer_direction' | 'commission_template_limit_transfer_direction_id' | 'commission_template_limit_type' | 'currency' | 'currency_id' | 'id' | 'period_count' | AccountLimitKeySpecifier)[];
+export type AccountLimitFieldPolicy = {
+	account?: FieldPolicy<any> | FieldReadFunction<any>,
+	account_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	amount?: FieldPolicy<any> | FieldReadFunction<any>,
+	commission_template_limit_action_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	commission_template_limit_action_type_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	commission_template_limit_period?: FieldPolicy<any> | FieldReadFunction<any>,
+	commission_template_limit_period_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	commission_template_limit_transfer_direction?: FieldPolicy<any> | FieldReadFunction<any>,
+	commission_template_limit_transfer_direction_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	commission_template_limit_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	currency?: FieldPolicy<any> | FieldReadFunction<any>,
+	currency_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	period_count?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type AccountLimitPaginatorKeySpecifier = ('data' | 'paginatorInfo' | AccountLimitPaginatorKeySpecifier)[];
+export type AccountLimitPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type AccountPaginatorKeySpecifier = ('data' | 'paginatorInfo' | AccountPaginatorKeySpecifier)[];
+export type AccountPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type AccountReachedLimitKeySpecifier = ('account' | 'account_id' | 'amount' | 'client_name' | 'client_type' | 'group_type' | 'id' | 'limit_currency' | 'limit_type' | 'limit_value' | 'period' | 'transfer_direction' | AccountReachedLimitKeySpecifier)[];
+export type AccountReachedLimitFieldPolicy = {
+	account?: FieldPolicy<any> | FieldReadFunction<any>,
+	account_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	amount?: FieldPolicy<any> | FieldReadFunction<any>,
+	client_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	client_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	group_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	limit_currency?: FieldPolicy<any> | FieldReadFunction<any>,
+	limit_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	limit_value?: FieldPolicy<any> | FieldReadFunction<any>,
+	period?: FieldPolicy<any> | FieldReadFunction<any>,
+	transfer_direction?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type AccountReachedLimitPaginatorKeySpecifier = ('data' | 'paginatorInfo' | AccountReachedLimitPaginatorKeySpecifier)[];
+export type AccountReachedLimitPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type AccountStateKeySpecifier = ('active' | 'id' | 'name' | AccountStateKeySpecifier)[];
+export type AccountStateFieldPolicy = {
+	active?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type AccountStatementKeySpecifier = ('account_currency' | 'account_number' | 'closing_balance' | 'closing_balance_date' | 'credit_turnover' | 'date_from' | 'debit_turnover' | 'opening_balance' | 'opening_balance_date' | 'transactions' | AccountStatementKeySpecifier)[];
+export type AccountStatementFieldPolicy = {
+	account_currency?: FieldPolicy<any> | FieldReadFunction<any>,
+	account_number?: FieldPolicy<any> | FieldReadFunction<any>,
+	closing_balance?: FieldPolicy<any> | FieldReadFunction<any>,
+	closing_balance_date?: FieldPolicy<any> | FieldReadFunction<any>,
+	credit_turnover?: FieldPolicy<any> | FieldReadFunction<any>,
+	date_from?: FieldPolicy<any> | FieldReadFunction<any>,
+	debit_turnover?: FieldPolicy<any> | FieldReadFunction<any>,
+	opening_balance?: FieldPolicy<any> | FieldReadFunction<any>,
+	opening_balance_date?: FieldPolicy<any> | FieldReadFunction<any>,
+	transactions?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type AccountStatementTransactionKeySpecifier = ('account_balance' | 'account_client' | 'account_number' | 'amount' | 'created_at' | 'execution_at' | 'reason' | 'sender_recipient' | 'status' | 'transaction_id' | AccountStatementTransactionKeySpecifier)[];
+export type AccountStatementTransactionFieldPolicy = {
+	account_balance?: FieldPolicy<any> | FieldReadFunction<any>,
+	account_client?: FieldPolicy<any> | FieldReadFunction<any>,
+	account_number?: FieldPolicy<any> | FieldReadFunction<any>,
+	amount?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	execution_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	reason?: FieldPolicy<any> | FieldReadFunction<any>,
+	sender_recipient?: FieldPolicy<any> | FieldReadFunction<any>,
+	status?: FieldPolicy<any> | FieldReadFunction<any>,
+	transaction_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ActiveSessionKeySpecifier = ('browser' | 'browser_version' | 'city' | 'company' | 'country' | 'created_at' | 'device_type' | 'domain' | 'id' | 'ip' | 'model' | 'platform' | 'provider' | 'trusted' | ActiveSessionKeySpecifier)[];
+export type ActiveSessionFieldPolicy = {
+	browser?: FieldPolicy<any> | FieldReadFunction<any>,
+	browser_version?: FieldPolicy<any> | FieldReadFunction<any>,
+	city?: FieldPolicy<any> | FieldReadFunction<any>,
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	country?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	device_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	domain?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	ip?: FieldPolicy<any> | FieldReadFunction<any>,
+	model?: FieldPolicy<any> | FieldReadFunction<any>,
+	platform?: FieldPolicy<any> | FieldReadFunction<any>,
+	provider?: FieldPolicy<any> | FieldReadFunction<any>,
+	trusted?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ActiveSessionMutatorResponseKeySpecifier = ('message' | 'status' | ActiveSessionMutatorResponseKeySpecifier)[];
+export type ActiveSessionMutatorResponseFieldPolicy = {
+	message?: FieldPolicy<any> | FieldReadFunction<any>,
+	status?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ActiveSessionsKeySpecifier = ('data' | 'paginatorInfo' | ActiveSessionsKeySpecifier)[];
+export type ActiveSessionsFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ActivityLogKeySpecifier = ('changes' | 'company' | 'created_at' | 'description' | 'domain' | 'group' | 'id' | 'member' | ActivityLogKeySpecifier)[];
+export type ActivityLogFieldPolicy = {
+	changes?: FieldPolicy<any> | FieldReadFunction<any>,
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	description?: FieldPolicy<any> | FieldReadFunction<any>,
+	domain?: FieldPolicy<any> | FieldReadFunction<any>,
+	group?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	member?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ActivityLogsKeySpecifier = ('data' | 'paginatorInfo' | ActivityLogsKeySpecifier)[];
+export type ActivityLogsFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantAccountKeySpecifier = ('account_name' | 'account_number' | 'account_type' | 'currency' | 'current_balance' | 'id' | 'is_primary' | 'is_show' | ApplicantAccountKeySpecifier)[];
+export type ApplicantAccountFieldPolicy = {
+	account_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	account_number?: FieldPolicy<any> | FieldReadFunction<any>,
+	account_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	currency?: FieldPolicy<any> | FieldReadFunction<any>,
+	current_balance?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_primary?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_show?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantBankingAccessKeySpecifier = ('applicant_company' | 'applicant_individual' | 'contact_administrator' | 'create_payments' | 'daily_limit' | 'grant_access' | 'id' | 'member' | 'monthly_limit' | 'operation_limit' | 'role' | 'sign_payments' | 'used_daily_limit' | 'used_monthly_limit' | ApplicantBankingAccessKeySpecifier)[];
+export type ApplicantBankingAccessFieldPolicy = {
+	applicant_company?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicant_individual?: FieldPolicy<any> | FieldReadFunction<any>,
+	contact_administrator?: FieldPolicy<any> | FieldReadFunction<any>,
+	create_payments?: FieldPolicy<any> | FieldReadFunction<any>,
+	daily_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	grant_access?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	member?: FieldPolicy<any> | FieldReadFunction<any>,
+	monthly_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	operation_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	role?: FieldPolicy<any> | FieldReadFunction<any>,
+	sign_payments?: FieldPolicy<any> | FieldReadFunction<any>,
+	used_daily_limit?: FieldPolicy<any> | FieldReadFunction<any>,
+	used_monthly_limit?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantBankingAccessesKeySpecifier = ('data' | 'paginatorInfo' | ApplicantBankingAccessesKeySpecifier)[];
+export type ApplicantBankingAccessesFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantCompanyKeySpecifier = ('address' | 'address2' | 'applicant_state' | 'basic_info_additional_field' | 'business_type' | 'city' | 'company' | 'company_info_additional_fields' | 'company_position' | 'company_type' | 'contact_email' | 'contact_phone' | 'contacts_additional_fields' | 'country' | 'created_at' | 'email' | 'email_verification' | 'expires_at' | 'group' | 'id' | 'incorporate_date' | 'kyc_level' | 'labels' | 'language' | 'license_number' | 'manager' | 'modules' | 'name' | 'notes' | 'office_address' | 'owner' | 'owner_position' | 'owner_relation' | 'phone' | 'phone_verification' | 'photo' | 'profile_additional_fields' | 'project' | 'reg_at' | 'reg_number' | 'risk_level' | 'state' | 'state_reason' | 'status' | 'tax' | 'url' | 'zip' | ApplicantCompanyKeySpecifier)[];
+export type ApplicantCompanyFieldPolicy = {
+	address?: FieldPolicy<any> | FieldReadFunction<any>,
+	address2?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicant_state?: FieldPolicy<any> | FieldReadFunction<any>,
+	basic_info_additional_field?: FieldPolicy<any> | FieldReadFunction<any>,
+	business_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	city?: FieldPolicy<any> | FieldReadFunction<any>,
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	company_info_additional_fields?: FieldPolicy<any> | FieldReadFunction<any>,
+	company_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	company_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	contact_email?: FieldPolicy<any> | FieldReadFunction<any>,
+	contact_phone?: FieldPolicy<any> | FieldReadFunction<any>,
+	contacts_additional_fields?: FieldPolicy<any> | FieldReadFunction<any>,
+	country?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	email?: FieldPolicy<any> | FieldReadFunction<any>,
+	email_verification?: FieldPolicy<any> | FieldReadFunction<any>,
+	expires_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	group?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	incorporate_date?: FieldPolicy<any> | FieldReadFunction<any>,
+	kyc_level?: FieldPolicy<any> | FieldReadFunction<any>,
+	labels?: FieldPolicy<any> | FieldReadFunction<any>,
+	language?: FieldPolicy<any> | FieldReadFunction<any>,
+	license_number?: FieldPolicy<any> | FieldReadFunction<any>,
+	manager?: FieldPolicy<any> | FieldReadFunction<any>,
+	modules?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	notes?: FieldPolicy<any> | FieldReadFunction<any>,
+	office_address?: FieldPolicy<any> | FieldReadFunction<any>,
+	owner?: FieldPolicy<any> | FieldReadFunction<any>,
+	owner_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	owner_relation?: FieldPolicy<any> | FieldReadFunction<any>,
+	phone?: FieldPolicy<any> | FieldReadFunction<any>,
+	phone_verification?: FieldPolicy<any> | FieldReadFunction<any>,
+	photo?: FieldPolicy<any> | FieldReadFunction<any>,
+	profile_additional_fields?: FieldPolicy<any> | FieldReadFunction<any>,
+	project?: FieldPolicy<any> | FieldReadFunction<any>,
+	reg_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	reg_number?: FieldPolicy<any> | FieldReadFunction<any>,
+	risk_level?: FieldPolicy<any> | FieldReadFunction<any>,
+	state?: FieldPolicy<any> | FieldReadFunction<any>,
+	state_reason?: FieldPolicy<any> | FieldReadFunction<any>,
+	status?: FieldPolicy<any> | FieldReadFunction<any>,
+	tax?: FieldPolicy<any> | FieldReadFunction<any>,
+	url?: FieldPolicy<any> | FieldReadFunction<any>,
+	zip?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantCompanyBusinessTypeKeySpecifier = ('id' | 'name' | ApplicantCompanyBusinessTypeKeySpecifier)[];
+export type ApplicantCompanyBusinessTypeFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantCompanyBusinessTypePaginatorKeySpecifier = ('data' | 'paginatorInfo' | ApplicantCompanyBusinessTypePaginatorKeySpecifier)[];
+export type ApplicantCompanyBusinessTypePaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantCompanyLabelKeySpecifier = ('hex_color_code' | 'id' | 'is_active' | 'name' | ApplicantCompanyLabelKeySpecifier)[];
+export type ApplicantCompanyLabelFieldPolicy = {
+	hex_color_code?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_active?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantCompanyLabelPaginatorKeySpecifier = ('data' | 'paginatorInfo' | ApplicantCompanyLabelPaginatorKeySpecifier)[];
+export type ApplicantCompanyLabelPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantCompanyModulesKeySpecifier = ('id' | 'is_active' | 'name' | ApplicantCompanyModulesKeySpecifier)[];
+export type ApplicantCompanyModulesFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_active?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantCompanyNotesKeySpecifier = ('applicant' | 'author' | 'created_at' | 'id' | 'note' | ApplicantCompanyNotesKeySpecifier)[];
+export type ApplicantCompanyNotesFieldPolicy = {
+	applicant?: FieldPolicy<any> | FieldReadFunction<any>,
+	author?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	note?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantCompanyNotesPaginatorKeySpecifier = ('data' | 'paginatorInfo' | ApplicantCompanyNotesPaginatorKeySpecifier)[];
+export type ApplicantCompanyNotesPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantCompanyPaginatorKeySpecifier = ('data' | 'paginatorInfo' | ApplicantCompanyPaginatorKeySpecifier)[];
+export type ApplicantCompanyPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantCompanyRiskLevelHistoryKeySpecifier = ('applicant_company' | 'comment' | 'created_at' | 'id' | 'manager' | 'risk_level' | ApplicantCompanyRiskLevelHistoryKeySpecifier)[];
+export type ApplicantCompanyRiskLevelHistoryFieldPolicy = {
+	applicant_company?: FieldPolicy<any> | FieldReadFunction<any>,
+	comment?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	manager?: FieldPolicy<any> | FieldReadFunction<any>,
+	risk_level?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantCompanyRiskLevelHistoryPaginatorKeySpecifier = ('data' | 'paginatorInfo' | ApplicantCompanyRiskLevelHistoryPaginatorKeySpecifier)[];
+export type ApplicantCompanyRiskLevelHistoryPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantDetailsRequisitesKeySpecifier = ('address' | 'bank_address' | 'bank_country' | 'bank_name' | 'beneficiary' | 'country' | 'currency' | 'iban' | 'swift_code' | ApplicantDetailsRequisitesKeySpecifier)[];
+export type ApplicantDetailsRequisitesFieldPolicy = {
+	address?: FieldPolicy<any> | FieldReadFunction<any>,
+	bank_address?: FieldPolicy<any> | FieldReadFunction<any>,
+	bank_country?: FieldPolicy<any> | FieldReadFunction<any>,
+	bank_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	beneficiary?: FieldPolicy<any> | FieldReadFunction<any>,
+	country?: FieldPolicy<any> | FieldReadFunction<any>,
+	currency?: FieldPolicy<any> | FieldReadFunction<any>,
+	iban?: FieldPolicy<any> | FieldReadFunction<any>,
+	swift_code?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantDeviceKeySpecifier = ('browser' | 'created_at' | 'device_type' | 'expired_at' | 'id' | 'ip' | 'model' | 'platform' | 'trusted' | ApplicantDeviceKeySpecifier)[];
+export type ApplicantDeviceFieldPolicy = {
+	browser?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	device_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	expired_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	ip?: FieldPolicy<any> | FieldReadFunction<any>,
+	model?: FieldPolicy<any> | FieldReadFunction<any>,
+	platform?: FieldPolicy<any> | FieldReadFunction<any>,
+	trusted?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantDocumentKeySpecifier = ('added_from' | 'applicant_id' | 'applicant_type' | 'company' | 'country' | 'created_at' | 'document_state' | 'document_state_id' | 'document_type' | 'document_type_id' | 'file' | 'id' | 'info' | 'internal_notes' | 'reject_details' | 'tags' | 'updated_at' | ApplicantDocumentKeySpecifier)[];
+export type ApplicantDocumentFieldPolicy = {
+	added_from?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicant_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicant_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	country?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	document_state?: FieldPolicy<any> | FieldReadFunction<any>,
+	document_state_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	document_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	document_type_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	file?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	info?: FieldPolicy<any> | FieldReadFunction<any>,
+	internal_notes?: FieldPolicy<any> | FieldReadFunction<any>,
+	reject_details?: FieldPolicy<any> | FieldReadFunction<any>,
+	tags?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantDocumentInternalNoteKeySpecifier = ('created_at' | 'document' | 'id' | 'member' | 'note' | 'updated_at' | ApplicantDocumentInternalNoteKeySpecifier)[];
+export type ApplicantDocumentInternalNoteFieldPolicy = {
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	document?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	member?: FieldPolicy<any> | FieldReadFunction<any>,
+	note?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantDocumentInternalNotePaginatorKeySpecifier = ('data' | 'paginatorInfo' | ApplicantDocumentInternalNotePaginatorKeySpecifier)[];
+export type ApplicantDocumentInternalNotePaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantDocumentPaginatorKeySpecifier = ('data' | 'paginatorInfo' | ApplicantDocumentPaginatorKeySpecifier)[];
+export type ApplicantDocumentPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantDocumentRejectDetailKeySpecifier = ('applicant_document' | 'applicant_document_tag' | 'created_at' | 'id' | 'member' | 'updated_at' | ApplicantDocumentRejectDetailKeySpecifier)[];
+export type ApplicantDocumentRejectDetailFieldPolicy = {
+	applicant_document?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicant_document_tag?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	member?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantDocumentTagKeySpecifier = ('category' | 'created_at' | 'description' | 'id' | 'member' | 'name' | ApplicantDocumentTagKeySpecifier)[];
+export type ApplicantDocumentTagFieldPolicy = {
+	category?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	description?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	member?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantDocumentTagCategoryKeySpecifier = ('id' | 'name' | ApplicantDocumentTagCategoryKeySpecifier)[];
+export type ApplicantDocumentTagCategoryFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantDocumentTagCategoryPaginatorKeySpecifier = ('data' | 'paginatorInfo' | ApplicantDocumentTagCategoryPaginatorKeySpecifier)[];
+export type ApplicantDocumentTagCategoryPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantDocumentTagPaginatorKeySpecifier = ('data' | 'paginatorInfo' | ApplicantDocumentTagPaginatorKeySpecifier)[];
+export type ApplicantDocumentTagPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantIndividualKeySpecifier = ('address' | 'address_additional_fields' | 'applicant_companies' | 'applicant_state' | 'backup_codes' | 'banking_access' | 'birth_at' | 'birth_city' | 'birth_country' | 'birth_state' | 'citizenship_country' | 'city' | 'company' | 'contacts_additional_fields' | 'country' | 'created_at' | 'email' | 'email_verification' | 'first_name' | 'fullname' | 'google2fa_secret' | 'group' | 'id' | 'ip_addresses' | 'kyc_level' | 'labels' | 'language' | 'last_name' | 'last_screened_at' | 'manager' | 'middle_name' | 'modules' | 'nationality' | 'notes' | 'personal_additional_fields' | 'phone' | 'phone_verification' | 'photo' | 'profile_additional_fields' | 'project' | 'risk_level' | 'security_pin' | 'sex' | 'state' | 'state_reason' | 'status' | 'two_factor_auth' | 'updated_at' | 'url' | 'zip' | ApplicantIndividualKeySpecifier)[];
+export type ApplicantIndividualFieldPolicy = {
+	address?: FieldPolicy<any> | FieldReadFunction<any>,
+	address_additional_fields?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicant_companies?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicant_state?: FieldPolicy<any> | FieldReadFunction<any>,
+	backup_codes?: FieldPolicy<any> | FieldReadFunction<any>,
+	banking_access?: FieldPolicy<any> | FieldReadFunction<any>,
+	birth_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	birth_city?: FieldPolicy<any> | FieldReadFunction<any>,
+	birth_country?: FieldPolicy<any> | FieldReadFunction<any>,
+	birth_state?: FieldPolicy<any> | FieldReadFunction<any>,
+	citizenship_country?: FieldPolicy<any> | FieldReadFunction<any>,
+	city?: FieldPolicy<any> | FieldReadFunction<any>,
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	contacts_additional_fields?: FieldPolicy<any> | FieldReadFunction<any>,
+	country?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	email?: FieldPolicy<any> | FieldReadFunction<any>,
+	email_verification?: FieldPolicy<any> | FieldReadFunction<any>,
+	first_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	fullname?: FieldPolicy<any> | FieldReadFunction<any>,
+	google2fa_secret?: FieldPolicy<any> | FieldReadFunction<any>,
+	group?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	ip_addresses?: FieldPolicy<any> | FieldReadFunction<any>,
+	kyc_level?: FieldPolicy<any> | FieldReadFunction<any>,
+	labels?: FieldPolicy<any> | FieldReadFunction<any>,
+	language?: FieldPolicy<any> | FieldReadFunction<any>,
+	last_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	last_screened_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	manager?: FieldPolicy<any> | FieldReadFunction<any>,
+	middle_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	modules?: FieldPolicy<any> | FieldReadFunction<any>,
+	nationality?: FieldPolicy<any> | FieldReadFunction<any>,
+	notes?: FieldPolicy<any> | FieldReadFunction<any>,
+	personal_additional_fields?: FieldPolicy<any> | FieldReadFunction<any>,
+	phone?: FieldPolicy<any> | FieldReadFunction<any>,
+	phone_verification?: FieldPolicy<any> | FieldReadFunction<any>,
+	photo?: FieldPolicy<any> | FieldReadFunction<any>,
+	profile_additional_fields?: FieldPolicy<any> | FieldReadFunction<any>,
+	project?: FieldPolicy<any> | FieldReadFunction<any>,
+	risk_level?: FieldPolicy<any> | FieldReadFunction<any>,
+	security_pin?: FieldPolicy<any> | FieldReadFunction<any>,
+	sex?: FieldPolicy<any> | FieldReadFunction<any>,
+	state?: FieldPolicy<any> | FieldReadFunction<any>,
+	state_reason?: FieldPolicy<any> | FieldReadFunction<any>,
+	status?: FieldPolicy<any> | FieldReadFunction<any>,
+	two_factor_auth?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	url?: FieldPolicy<any> | FieldReadFunction<any>,
+	zip?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantIndividualCompanyKeySpecifier = ('applicant_company' | 'applicant_company_id' | 'applicant_id' | 'applicant_individual_company_position_id' | 'applicant_individual_company_relation_id' | 'applicant_type' | 'client' | 'percentage_owned' | 'position_in_company' | 'relation_to_company' | ApplicantIndividualCompanyKeySpecifier)[];
+export type ApplicantIndividualCompanyFieldPolicy = {
+	applicant_company?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicant_company_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicant_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicant_individual_company_position_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicant_individual_company_relation_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicant_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	client?: FieldPolicy<any> | FieldReadFunction<any>,
+	percentage_owned?: FieldPolicy<any> | FieldReadFunction<any>,
+	position_in_company?: FieldPolicy<any> | FieldReadFunction<any>,
+	relation_to_company?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantIndividualCompanyPositionKeySpecifier = ('company' | 'id' | 'name' | ApplicantIndividualCompanyPositionKeySpecifier)[];
+export type ApplicantIndividualCompanyPositionFieldPolicy = {
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantIndividualCompanyPositionPaginatorKeySpecifier = ('data' | 'paginatorInfo' | ApplicantIndividualCompanyPositionPaginatorKeySpecifier)[];
+export type ApplicantIndividualCompanyPositionPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantIndividualCompanyRelationKeySpecifier = ('company' | 'id' | 'name' | ApplicantIndividualCompanyRelationKeySpecifier)[];
+export type ApplicantIndividualCompanyRelationFieldPolicy = {
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantIndividualCompanyRelationPaginatorKeySpecifier = ('data' | 'paginatorInfo' | ApplicantIndividualCompanyRelationPaginatorKeySpecifier)[];
+export type ApplicantIndividualCompanyRelationPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantIndividualLabelKeySpecifier = ('hex_color_code' | 'id' | 'is_active' | 'name' | ApplicantIndividualLabelKeySpecifier)[];
+export type ApplicantIndividualLabelFieldPolicy = {
+	hex_color_code?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_active?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantIndividualLabelPaginatorKeySpecifier = ('data' | 'paginatorInfo' | ApplicantIndividualLabelPaginatorKeySpecifier)[];
+export type ApplicantIndividualLabelPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantIndividualModulesKeySpecifier = ('id' | 'is_active' | 'name' | ApplicantIndividualModulesKeySpecifier)[];
+export type ApplicantIndividualModulesFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_active?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantIndividualNotesKeySpecifier = ('applicant' | 'author' | 'created_at' | 'id' | 'note' | ApplicantIndividualNotesKeySpecifier)[];
+export type ApplicantIndividualNotesFieldPolicy = {
+	applicant?: FieldPolicy<any> | FieldReadFunction<any>,
+	author?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	note?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantIndividualNotesPaginatorKeySpecifier = ('data' | 'paginatorInfo' | ApplicantIndividualNotesPaginatorKeySpecifier)[];
+export type ApplicantIndividualNotesPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantIndividualPaginatorKeySpecifier = ('data' | 'paginatorInfo' | ApplicantIndividualPaginatorKeySpecifier)[];
+export type ApplicantIndividualPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantKycLevelKeySpecifier = ('id' | 'name' | ApplicantKycLevelKeySpecifier)[];
+export type ApplicantKycLevelFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantKycLevelPaginatorKeySpecifier = ('data' | 'paginatorInfo' | ApplicantKycLevelPaginatorKeySpecifier)[];
+export type ApplicantKycLevelPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantLinkedCompanyKeySpecifier = ('company' | 'company_position' | 'company_relation' | 'percentage_owned' | ApplicantLinkedCompanyKeySpecifier)[];
+export type ApplicantLinkedCompanyFieldPolicy = {
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	company_position?: FieldPolicy<any> | FieldReadFunction<any>,
+	company_relation?: FieldPolicy<any> | FieldReadFunction<any>,
+	percentage_owned?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantModulesKeySpecifier = ('id' | 'name' | ApplicantModulesKeySpecifier)[];
+export type ApplicantModulesFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantModulesPaginatorKeySpecifier = ('data' | 'paginatorInfo' | ApplicantModulesPaginatorKeySpecifier)[];
+export type ApplicantModulesPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantProfileKeySpecifier = ('address' | 'applicant_state' | 'backup_codes' | 'birth_at' | 'birth_city' | 'birth_country' | 'birth_state' | 'citizenship_country' | 'city' | 'companies' | 'company' | 'contacts_additional_fields' | 'country' | 'created_at' | 'email' | 'first_name' | 'fullname' | 'google2fa_secret' | 'group' | 'id' | 'ip_addresses' | 'is_verification_phone' | 'labels' | 'language' | 'last_name' | 'manager' | 'middle_name' | 'modules' | 'nationality' | 'notes' | 'notify_device_email' | 'personal_additional_fields' | 'phone' | 'photo' | 'profile_additional_fields' | 'risk_level' | 'security_pin' | 'sex' | 'state' | 'state_reason' | 'status' | 'two_factor_auth' | 'url' | 'zip' | ApplicantProfileKeySpecifier)[];
+export type ApplicantProfileFieldPolicy = {
+	address?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicant_state?: FieldPolicy<any> | FieldReadFunction<any>,
+	backup_codes?: FieldPolicy<any> | FieldReadFunction<any>,
+	birth_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	birth_city?: FieldPolicy<any> | FieldReadFunction<any>,
+	birth_country?: FieldPolicy<any> | FieldReadFunction<any>,
+	birth_state?: FieldPolicy<any> | FieldReadFunction<any>,
+	citizenship_country?: FieldPolicy<any> | FieldReadFunction<any>,
+	city?: FieldPolicy<any> | FieldReadFunction<any>,
+	companies?: FieldPolicy<any> | FieldReadFunction<any>,
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	contacts_additional_fields?: FieldPolicy<any> | FieldReadFunction<any>,
+	country?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	email?: FieldPolicy<any> | FieldReadFunction<any>,
+	first_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	fullname?: FieldPolicy<any> | FieldReadFunction<any>,
+	google2fa_secret?: FieldPolicy<any> | FieldReadFunction<any>,
+	group?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	ip_addresses?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_verification_phone?: FieldPolicy<any> | FieldReadFunction<any>,
+	labels?: FieldPolicy<any> | FieldReadFunction<any>,
+	language?: FieldPolicy<any> | FieldReadFunction<any>,
+	last_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	manager?: FieldPolicy<any> | FieldReadFunction<any>,
+	middle_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	modules?: FieldPolicy<any> | FieldReadFunction<any>,
+	nationality?: FieldPolicy<any> | FieldReadFunction<any>,
+	notes?: FieldPolicy<any> | FieldReadFunction<any>,
+	notify_device_email?: FieldPolicy<any> | FieldReadFunction<any>,
+	personal_additional_fields?: FieldPolicy<any> | FieldReadFunction<any>,
+	phone?: FieldPolicy<any> | FieldReadFunction<any>,
+	photo?: FieldPolicy<any> | FieldReadFunction<any>,
+	profile_additional_fields?: FieldPolicy<any> | FieldReadFunction<any>,
+	risk_level?: FieldPolicy<any> | FieldReadFunction<any>,
+	security_pin?: FieldPolicy<any> | FieldReadFunction<any>,
+	sex?: FieldPolicy<any> | FieldReadFunction<any>,
+	state?: FieldPolicy<any> | FieldReadFunction<any>,
+	state_reason?: FieldPolicy<any> | FieldReadFunction<any>,
+	status?: FieldPolicy<any> | FieldReadFunction<any>,
+	two_factor_auth?: FieldPolicy<any> | FieldReadFunction<any>,
+	url?: FieldPolicy<any> | FieldReadFunction<any>,
+	zip?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantRequisitesKeySpecifier = ('account_number' | 'bank' | 'currency' | 'id' | 'owner' | ApplicantRequisitesKeySpecifier)[];
+export type ApplicantRequisitesFieldPolicy = {
+	account_number?: FieldPolicy<any> | FieldReadFunction<any>,
+	bank?: FieldPolicy<any> | FieldReadFunction<any>,
+	currency?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	owner?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantRiskLevelKeySpecifier = ('id' | 'name' | ApplicantRiskLevelKeySpecifier)[];
+export type ApplicantRiskLevelFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantRiskLevelHistoryKeySpecifier = ('applicant' | 'comment' | 'created_at' | 'id' | 'manager' | 'risk_level' | ApplicantRiskLevelHistoryKeySpecifier)[];
+export type ApplicantRiskLevelHistoryFieldPolicy = {
+	applicant?: FieldPolicy<any> | FieldReadFunction<any>,
+	comment?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	manager?: FieldPolicy<any> | FieldReadFunction<any>,
+	risk_level?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantRiskLevelHistoryPaginatorKeySpecifier = ('data' | 'paginatorInfo' | ApplicantRiskLevelHistoryPaginatorKeySpecifier)[];
+export type ApplicantRiskLevelHistoryPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantRiskLevelPaginatorKeySpecifier = ('data' | 'paginatorInfo' | ApplicantRiskLevelPaginatorKeySpecifier)[];
+export type ApplicantRiskLevelPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantSettingsProfileKeySpecifier = ('email' | 'email_confirm_url' | 'first_name' | 'id' | 'last_name' | 'middle_name' | ApplicantSettingsProfileKeySpecifier)[];
+export type ApplicantSettingsProfileFieldPolicy = {
+	email?: FieldPolicy<any> | FieldReadFunction<any>,
+	email_confirm_url?: FieldPolicy<any> | FieldReadFunction<any>,
+	first_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	last_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	middle_name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantStateKeySpecifier = ('id' | 'name' | ApplicantStateKeySpecifier)[];
+export type ApplicantStateFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantStatePaginatorKeySpecifier = ('data' | 'paginatorInfo' | ApplicantStatePaginatorKeySpecifier)[];
+export type ApplicantStatePaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantStateReasonKeySpecifier = ('id' | 'name' | ApplicantStateReasonKeySpecifier)[];
+export type ApplicantStateReasonFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantStateReasonPaginatorKeySpecifier = ('data' | 'paginatorInfo' | ApplicantStateReasonPaginatorKeySpecifier)[];
+export type ApplicantStateReasonPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantStatusKeySpecifier = ('id' | 'name' | ApplicantStatusKeySpecifier)[];
+export type ApplicantStatusFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantStatusPaginatorKeySpecifier = ('data' | 'paginatorInfo' | ApplicantStatusPaginatorKeySpecifier)[];
+export type ApplicantStatusPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ApplicantVerificationStatusKeySpecifier = ('id' | 'name' | ApplicantVerificationStatusKeySpecifier)[];
+export type ApplicantVerificationStatusFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type AuthenticationLogKeySpecifier = ('browser' | 'browser_version' | 'city' | 'client_type' | 'company' | 'country' | 'created_at' | 'device_type' | 'domain' | 'email' | 'expired_at' | 'group' | 'id' | 'info' | 'ip' | 'member' | 'model' | 'platform' | 'provider' | 'status' | AuthenticationLogKeySpecifier)[];
+export type AuthenticationLogFieldPolicy = {
+	browser?: FieldPolicy<any> | FieldReadFunction<any>,
+	browser_version?: FieldPolicy<any> | FieldReadFunction<any>,
+	city?: FieldPolicy<any> | FieldReadFunction<any>,
+	client_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	country?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	device_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	domain?: FieldPolicy<any> | FieldReadFunction<any>,
+	email?: FieldPolicy<any> | FieldReadFunction<any>,
+	expired_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	group?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	info?: FieldPolicy<any> | FieldReadFunction<any>,
+	ip?: FieldPolicy<any> | FieldReadFunction<any>,
+	member?: FieldPolicy<any> | FieldReadFunction<any>,
+	model?: FieldPolicy<any> | FieldReadFunction<any>,
+	platform?: FieldPolicy<any> | FieldReadFunction<any>,
+	provider?: FieldPolicy<any> | FieldReadFunction<any>,
+	status?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type AuthenticationLogsKeySpecifier = ('data' | 'paginatorInfo' | AuthenticationLogsKeySpecifier)[];
+export type AuthenticationLogsFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type BankCorrespondentKeySpecifier = ('address' | 'bank_account' | 'bank_code' | 'currencies' | 'id' | 'is_active' | 'name' | 'regions' | BankCorrespondentKeySpecifier)[];
+export type BankCorrespondentFieldPolicy = {
+	address?: FieldPolicy<any> | FieldReadFunction<any>,
+	bank_account?: FieldPolicy<any> | FieldReadFunction<any>,
+	bank_code?: FieldPolicy<any> | FieldReadFunction<any>,
+	currencies?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_active?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	regions?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type BankCorrespondentPaginatorKeySpecifier = ('data' | 'paginatorInfo' | BankCorrespondentPaginatorKeySpecifier)[];
+export type BankCorrespondentPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type BusinessActivityKeySpecifier = ('id' | 'name' | BusinessActivityKeySpecifier)[];
+export type BusinessActivityFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type BusinessActivityPaginatorKeySpecifier = ('data' | 'paginatorInfo' | BusinessActivityPaginatorKeySpecifier)[];
+export type BusinessActivityPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ClientAccountsDetailsKeySpecifier = ('available_balance' | 'currency' | 'current_balance' | 'id' | 'max_limit_balance' | 'min_limit_balance' | 'reserved_balance' | ClientAccountsDetailsKeySpecifier)[];
+export type ClientAccountsDetailsFieldPolicy = {
+	available_balance?: FieldPolicy<any> | FieldReadFunction<any>,
+	currency?: FieldPolicy<any> | FieldReadFunction<any>,
+	current_balance?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	max_limit_balance?: FieldPolicy<any> | FieldReadFunction<any>,
+	min_limit_balance?: FieldPolicy<any> | FieldReadFunction<any>,
+	reserved_balance?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ClientIpAddressKeySpecifier = ('client_id' | 'client_type' | 'id' | 'ip_address' | ClientIpAddressKeySpecifier)[];
+export type ClientIpAddressFieldPolicy = {
+	client_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	client_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	ip_address?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type CommissionPriceListKeySpecifier = ('account' | 'commission_template' | 'company' | 'fees' | 'id' | 'name' | 'owner' | 'payment_system' | 'provider' | 'region' | CommissionPriceListKeySpecifier)[];
+export type CommissionPriceListFieldPolicy = {
+	account?: FieldPolicy<any> | FieldReadFunction<any>,
+	commission_template?: FieldPolicy<any> | FieldReadFunction<any>,
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	fees?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	owner?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_system?: FieldPolicy<any> | FieldReadFunction<any>,
+	provider?: FieldPolicy<any> | FieldReadFunction<any>,
+	region?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type CommissionPriceListPaginatorKeySpecifier = ('data' | 'paginatorInfo' | CommissionPriceListPaginatorKeySpecifier)[];
+export type CommissionPriceListPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type CommissionTemplateKeySpecifier = ('account' | 'business_activity' | 'commission_template_limits' | 'company' | 'country_id' | 'currencies' | 'currency_id' | 'description' | 'id' | 'is_active' | 'name' | 'owner' | 'payment_provider' | 'regions' | CommissionTemplateKeySpecifier)[];
+export type CommissionTemplateFieldPolicy = {
+	account?: FieldPolicy<any> | FieldReadFunction<any>,
+	business_activity?: FieldPolicy<any> | FieldReadFunction<any>,
+	commission_template_limits?: FieldPolicy<any> | FieldReadFunction<any>,
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	country_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	currencies?: FieldPolicy<any> | FieldReadFunction<any>,
+	currency_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	description?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_active?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	owner?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_provider?: FieldPolicy<any> | FieldReadFunction<any>,
+	regions?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type CommissionTemplateLimitKeySpecifier = ('amount' | 'commission_template' | 'commission_template_limit_action_type' | 'commission_template_limit_period' | 'commission_template_limit_transfer_direction' | 'commission_template_limit_type' | 'currency' | 'id' | 'payment_system' | 'period_count' | 'region' | CommissionTemplateLimitKeySpecifier)[];
+export type CommissionTemplateLimitFieldPolicy = {
+	amount?: FieldPolicy<any> | FieldReadFunction<any>,
+	commission_template?: FieldPolicy<any> | FieldReadFunction<any>,
+	commission_template_limit_action_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	commission_template_limit_period?: FieldPolicy<any> | FieldReadFunction<any>,
+	commission_template_limit_transfer_direction?: FieldPolicy<any> | FieldReadFunction<any>,
+	commission_template_limit_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	currency?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_system?: FieldPolicy<any> | FieldReadFunction<any>,
+	period_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	region?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type CommissionTemplateLimitActionTypeKeySpecifier = ('id' | 'name' | CommissionTemplateLimitActionTypeKeySpecifier)[];
+export type CommissionTemplateLimitActionTypeFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type CommissionTemplateLimitActionTypePaginatorKeySpecifier = ('data' | 'paginatorInfo' | CommissionTemplateLimitActionTypePaginatorKeySpecifier)[];
+export type CommissionTemplateLimitActionTypePaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type CommissionTemplateLimitPaginatorKeySpecifier = ('data' | 'paginatorInfo' | CommissionTemplateLimitPaginatorKeySpecifier)[];
+export type CommissionTemplateLimitPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type CommissionTemplateLimitPeriodKeySpecifier = ('id' | 'name' | CommissionTemplateLimitPeriodKeySpecifier)[];
+export type CommissionTemplateLimitPeriodFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type CommissionTemplateLimitPeriodPaginatorKeySpecifier = ('data' | 'paginatorInfo' | CommissionTemplateLimitPeriodPaginatorKeySpecifier)[];
+export type CommissionTemplateLimitPeriodPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type CommissionTemplateLimitTransferDirectionKeySpecifier = ('id' | 'name' | CommissionTemplateLimitTransferDirectionKeySpecifier)[];
+export type CommissionTemplateLimitTransferDirectionFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type CommissionTemplateLimitTransferDirectionPaginatorKeySpecifier = ('data' | 'paginatorInfo' | CommissionTemplateLimitTransferDirectionPaginatorKeySpecifier)[];
+export type CommissionTemplateLimitTransferDirectionPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type CommissionTemplateLimitTypeKeySpecifier = ('id' | 'name' | CommissionTemplateLimitTypeKeySpecifier)[];
+export type CommissionTemplateLimitTypeFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type CommissionTemplateLimitTypePaginatorKeySpecifier = ('data' | 'paginatorInfo' | CommissionTemplateLimitTypePaginatorKeySpecifier)[];
+export type CommissionTemplateLimitTypePaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type CommissionTemplatePaginatorKeySpecifier = ('data' | 'paginatorInfo' | CommissionTemplatePaginatorKeySpecifier)[];
+export type CommissionTemplatePaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type CompanyKeySpecifier = ('additional_fields_basic' | 'additional_fields_data' | 'additional_fields_info' | 'additional_fields_settings' | 'address' | 'backoffice_forgot_password_url' | 'backoffice_login_url' | 'backoffice_support_email' | 'backoffice_support_url' | 'city' | 'company_modules' | 'company_number' | 'contact_name' | 'country' | 'created_at' | 'departments' | 'email' | 'employees' | 'entity_type' | 'exp_date' | 'id' | 'incorporate_date' | 'license_number' | 'logo' | 'member_verify_url' | 'members' | 'members_count' | 'name' | 'phone' | 'positions' | 'projects' | 'projects_count' | 'reg_address' | 'reg_number' | 'state' | 'state_reason' | 'tax_id' | 'type_of_industry' | 'updated_at' | 'url' | 'vv_token' | 'zip' | CompanyKeySpecifier)[];
+export type CompanyFieldPolicy = {
+	additional_fields_basic?: FieldPolicy<any> | FieldReadFunction<any>,
+	additional_fields_data?: FieldPolicy<any> | FieldReadFunction<any>,
+	additional_fields_info?: FieldPolicy<any> | FieldReadFunction<any>,
+	additional_fields_settings?: FieldPolicy<any> | FieldReadFunction<any>,
+	address?: FieldPolicy<any> | FieldReadFunction<any>,
+	backoffice_forgot_password_url?: FieldPolicy<any> | FieldReadFunction<any>,
+	backoffice_login_url?: FieldPolicy<any> | FieldReadFunction<any>,
+	backoffice_support_email?: FieldPolicy<any> | FieldReadFunction<any>,
+	backoffice_support_url?: FieldPolicy<any> | FieldReadFunction<any>,
+	city?: FieldPolicy<any> | FieldReadFunction<any>,
+	company_modules?: FieldPolicy<any> | FieldReadFunction<any>,
+	company_number?: FieldPolicy<any> | FieldReadFunction<any>,
+	contact_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	country?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	departments?: FieldPolicy<any> | FieldReadFunction<any>,
+	email?: FieldPolicy<any> | FieldReadFunction<any>,
+	employees?: FieldPolicy<any> | FieldReadFunction<any>,
+	entity_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	exp_date?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	incorporate_date?: FieldPolicy<any> | FieldReadFunction<any>,
+	license_number?: FieldPolicy<any> | FieldReadFunction<any>,
+	logo?: FieldPolicy<any> | FieldReadFunction<any>,
+	member_verify_url?: FieldPolicy<any> | FieldReadFunction<any>,
+	members?: FieldPolicy<any> | FieldReadFunction<any>,
+	members_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	phone?: FieldPolicy<any> | FieldReadFunction<any>,
+	positions?: FieldPolicy<any> | FieldReadFunction<any>,
+	projects?: FieldPolicy<any> | FieldReadFunction<any>,
+	projects_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	reg_address?: FieldPolicy<any> | FieldReadFunction<any>,
+	reg_number?: FieldPolicy<any> | FieldReadFunction<any>,
+	state?: FieldPolicy<any> | FieldReadFunction<any>,
+	state_reason?: FieldPolicy<any> | FieldReadFunction<any>,
+	tax_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	type_of_industry?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	url?: FieldPolicy<any> | FieldReadFunction<any>,
+	vv_token?: FieldPolicy<any> | FieldReadFunction<any>,
+	zip?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type CompanyModuleKeySpecifier = ('iban_providers' | 'id' | 'is_active' | 'module' | 'payment_providers' | CompanyModuleKeySpecifier)[];
+export type CompanyModuleFieldPolicy = {
+	iban_providers?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_active?: FieldPolicy<any> | FieldReadFunction<any>,
+	module?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_providers?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type CompanyModuleIbanProviderKeySpecifier = ('company_module_id' | 'id' | 'is_active' | 'payment_provider_iban' | CompanyModuleIbanProviderKeySpecifier)[];
+export type CompanyModuleIbanProviderFieldPolicy = {
+	company_module_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_active?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_provider_iban?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type CompanyModuleIbanProviderPasswordKeySpecifier = ('id' | 'password' | CompanyModuleIbanProviderPasswordKeySpecifier)[];
+export type CompanyModuleIbanProviderPasswordFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	password?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type CompanyModulePaymentProviderKeySpecifier = ('company_module_id' | 'id' | 'is_active' | 'payment_provider' | CompanyModulePaymentProviderKeySpecifier)[];
+export type CompanyModulePaymentProviderFieldPolicy = {
+	company_module_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_active?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_provider?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type CompanyModulePaymentProviderPasswordKeySpecifier = ('id' | 'password' | CompanyModulePaymentProviderPasswordKeySpecifier)[];
+export type CompanyModulePaymentProviderPasswordFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	password?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type CompanyPaginatorKeySpecifier = ('data' | 'paginatorInfo' | CompanyPaginatorKeySpecifier)[];
+export type CompanyPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type CountryKeySpecifier = ('id' | 'iso' | 'name' | CountryKeySpecifier)[];
+export type CountryFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	iso?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type CountryPaginatorKeySpecifier = ('data' | 'paginatorInfo' | CountryPaginatorKeySpecifier)[];
+export type CountryPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type CurrenciesKeySpecifier = ('code' | 'id' | 'minor_unit' | 'name' | CurrenciesKeySpecifier)[];
+export type CurrenciesFieldPolicy = {
+	code?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	minor_unit?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type CurrenciesPaginatorKeySpecifier = ('data' | 'paginatorInfo' | CurrenciesPaginatorKeySpecifier)[];
+export type CurrenciesPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type DepartmentKeySpecifier = ('company' | 'created_at' | 'id' | 'name' | 'positions' | DepartmentKeySpecifier)[];
+export type DepartmentFieldPolicy = {
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	positions?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type DepartmentPaginatorKeySpecifier = ('data' | 'paginatorInfo' | DepartmentPaginatorKeySpecifier)[];
+export type DepartmentPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type DepartmentPositionKeySpecifier = ('company' | 'department' | 'id' | 'is_active' | 'name' | DepartmentPositionKeySpecifier)[];
+export type DepartmentPositionFieldPolicy = {
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	department?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_active?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type DepartmentPositionPaginatorKeySpecifier = ('data' | 'paginatorInfo' | DepartmentPositionPaginatorKeySpecifier)[];
+export type DepartmentPositionPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type DocumentStateKeySpecifier = ('id' | 'name' | DocumentStateKeySpecifier)[];
+export type DocumentStateFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type DocumentTypeKeySpecifier = ('id' | 'name' | DocumentTypeKeySpecifier)[];
+export type DocumentTypeFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type EmailNotificationKeySpecifier = ('clientable' | 'company' | 'created_at' | 'group_role' | 'group_type' | 'id' | 'recipient_type' | 'templates' | 'type' | 'updated_at' | EmailNotificationKeySpecifier)[];
+export type EmailNotificationFieldPolicy = {
+	clientable?: FieldPolicy<any> | FieldReadFunction<any>,
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	group_role?: FieldPolicy<any> | FieldReadFunction<any>,
+	group_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	recipient_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	templates?: FieldPolicy<any> | FieldReadFunction<any>,
+	type?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type EmailNotificationPaginatorKeySpecifier = ('data' | 'paginatorInfo' | EmailNotificationPaginatorKeySpecifier)[];
+export type EmailNotificationPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type EmailSmtpKeySpecifier = ('company' | 'from_email' | 'from_name' | 'host_name' | 'id' | 'is_sending_mail' | 'member' | 'name' | 'password' | 'port' | 'replay_to' | 'security' | 'username' | EmailSmtpKeySpecifier)[];
+export type EmailSmtpFieldPolicy = {
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	from_email?: FieldPolicy<any> | FieldReadFunction<any>,
+	from_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	host_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_sending_mail?: FieldPolicy<any> | FieldReadFunction<any>,
+	member?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	password?: FieldPolicy<any> | FieldReadFunction<any>,
+	port?: FieldPolicy<any> | FieldReadFunction<any>,
+	replay_to?: FieldPolicy<any> | FieldReadFunction<any>,
+	security?: FieldPolicy<any> | FieldReadFunction<any>,
+	username?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type EmailTemplateKeySpecifier = ('company' | 'content' | 'created_at' | 'id' | 'layout' | 'name' | 'service_type' | 'subject' | 'type' | 'updated_at' | 'use_layout' | EmailTemplateKeySpecifier)[];
+export type EmailTemplateFieldPolicy = {
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	content?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	layout?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	service_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	subject?: FieldPolicy<any> | FieldReadFunction<any>,
+	type?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	use_layout?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type EmailTemplateLayoutKeySpecifier = ('company_id' | 'created_at' | 'footer' | 'header' | 'id' | 'updated_at' | EmailTemplateLayoutKeySpecifier)[];
+export type EmailTemplateLayoutFieldPolicy = {
+	company_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	footer?: FieldPolicy<any> | FieldReadFunction<any>,
+	header?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type EmailTemplateOnCompanyResponseKeySpecifier = ('data' | 'layout' | EmailTemplateOnCompanyResponseKeySpecifier)[];
+export type EmailTemplateOnCompanyResponseFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	layout?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type EmployeeKeySpecifier = ('employees_number' | 'id' | EmployeeKeySpecifier)[];
+export type EmployeeFieldPolicy = {
+	employees_number?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type FeeKeySpecifier = ('account' | 'client' | 'created_at' | 'fee' | 'fee_amount' | 'fee_pp' | 'member' | 'operation_type' | 'price_list_fee' | 'status' | 'transfer_outgoing' | 'transfer_type' | FeeKeySpecifier)[];
+export type FeeFieldPolicy = {
+	account?: FieldPolicy<any> | FieldReadFunction<any>,
+	client?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	fee?: FieldPolicy<any> | FieldReadFunction<any>,
+	fee_amount?: FieldPolicy<any> | FieldReadFunction<any>,
+	fee_pp?: FieldPolicy<any> | FieldReadFunction<any>,
+	member?: FieldPolicy<any> | FieldReadFunction<any>,
+	operation_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	price_list_fee?: FieldPolicy<any> | FieldReadFunction<any>,
+	status?: FieldPolicy<any> | FieldReadFunction<any>,
+	transfer_outgoing?: FieldPolicy<any> | FieldReadFunction<any>,
+	transfer_type?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type FeeItemKeySpecifier = ('amount_from' | 'amount_to' | 'fee' | 'mode' | 'percent' | FeeItemKeySpecifier)[];
+export type FeeItemFieldPolicy = {
+	amount_from?: FieldPolicy<any> | FieldReadFunction<any>,
+	amount_to?: FieldPolicy<any> | FieldReadFunction<any>,
+	fee?: FieldPolicy<any> | FieldReadFunction<any>,
+	mode?: FieldPolicy<any> | FieldReadFunction<any>,
+	percent?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type FeeModeKeySpecifier = ('id' | 'name' | FeeModeKeySpecifier)[];
+export type FeeModeFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type FeePeriodKeySpecifier = ('id' | 'name' | FeePeriodKeySpecifier)[];
+export type FeePeriodFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type FeeTypeKeySpecifier = ('id' | 'name' | FeeTypeKeySpecifier)[];
+export type FeeTypeFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type FilesKeySpecifier = ('author_id' | 'created_at' | 'entity_type' | 'file_name' | 'id' | 'link' | 'mime_type' | 'size' | 'storage_name' | 'storage_path' | 'updated_at' | FilesKeySpecifier)[];
+export type FilesFieldPolicy = {
+	author_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	entity_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	file_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	link?: FieldPolicy<any> | FieldReadFunction<any>,
+	mime_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	size?: FieldPolicy<any> | FieldReadFunction<any>,
+	storage_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	storage_path?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type FilesPaginatorKeySpecifier = ('data' | 'paginatorInfo' | FilesPaginatorKeySpecifier)[];
+export type FilesPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type GroupRoleKeySpecifier = ('company' | 'description' | 'group_type' | 'group_type_id' | 'id' | 'is_active' | 'module' | 'module_id' | 'name' | 'providers' | 'role' | 'role_id' | GroupRoleKeySpecifier)[];
+export type GroupRoleFieldPolicy = {
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	description?: FieldPolicy<any> | FieldReadFunction<any>,
+	group_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	group_type_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_active?: FieldPolicy<any> | FieldReadFunction<any>,
+	module?: FieldPolicy<any> | FieldReadFunction<any>,
+	module_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	providers?: FieldPolicy<any> | FieldReadFunction<any>,
+	role?: FieldPolicy<any> | FieldReadFunction<any>,
+	role_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type GroupRolePaginatorKeySpecifier = ('data' | 'paginatorInfo' | GroupRolePaginatorKeySpecifier)[];
+export type GroupRolePaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type GroupRoleProviderKeySpecifier = ('commission_template' | 'group_role_id' | 'id' | 'is_default' | 'payment_provider' | GroupRoleProviderKeySpecifier)[];
+export type GroupRoleProviderFieldPolicy = {
+	commission_template?: FieldPolicy<any> | FieldReadFunction<any>,
+	group_role_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_default?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_provider?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type GroupRoleViewKeySpecifier = ('commission_template_id' | 'commission_template_name' | 'company' | 'description' | 'group_type' | 'group_type_id' | 'id' | 'is_active' | 'module' | 'module_id' | 'name' | 'payment_provider_id' | 'payment_provider_name' | 'role' | 'role_id' | GroupRoleViewKeySpecifier)[];
+export type GroupRoleViewFieldPolicy = {
+	commission_template_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	commission_template_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	description?: FieldPolicy<any> | FieldReadFunction<any>,
+	group_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	group_type_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_active?: FieldPolicy<any> | FieldReadFunction<any>,
+	module?: FieldPolicy<any> | FieldReadFunction<any>,
+	module_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_provider_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_provider_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	role?: FieldPolicy<any> | FieldReadFunction<any>,
+	role_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type GroupRoleViewPaginatorKeySpecifier = ('data' | 'paginatorInfo' | GroupRoleViewPaginatorKeySpecifier)[];
+export type GroupRoleViewPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type GroupTypeKeySpecifier = ('id' | 'name' | GroupTypeKeySpecifier)[];
+export type GroupTypeFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type GroupTypePaginatorKeySpecifier = ('data' | 'paginatorInfo' | GroupTypePaginatorKeySpecifier)[];
+export type GroupTypePaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type GroupsKeySpecifier = ('groups' | 'id' | 'name' | GroupsKeySpecifier)[];
+export type GroupsFieldPolicy = {
+	groups?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type KycTimelineKeySpecifier = ('action' | 'action_new_value' | 'action_old_value' | 'action_type' | 'applicant' | 'applicant_id' | 'applicant_type' | 'browser' | 'company' | 'created_at' | 'creator' | 'document' | 'id' | 'ip' | 'os' | 'tag' | KycTimelineKeySpecifier)[];
+export type KycTimelineFieldPolicy = {
+	action?: FieldPolicy<any> | FieldReadFunction<any>,
+	action_new_value?: FieldPolicy<any> | FieldReadFunction<any>,
+	action_old_value?: FieldPolicy<any> | FieldReadFunction<any>,
+	action_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicant?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicant_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicant_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	browser?: FieldPolicy<any> | FieldReadFunction<any>,
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	creator?: FieldPolicy<any> | FieldReadFunction<any>,
+	document?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	ip?: FieldPolicy<any> | FieldReadFunction<any>,
+	os?: FieldPolicy<any> | FieldReadFunction<any>,
+	tag?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type KycTimelinesKeySpecifier = ('data' | 'paginatorInfo' | KycTimelinesKeySpecifier)[];
+export type KycTimelinesFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type LanguagesKeySpecifier = ('id' | 'iso' | 'name' | LanguagesKeySpecifier)[];
+export type LanguagesFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	iso?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type LanguagesPaginatorKeySpecifier = ('data' | 'paginatorInfo' | LanguagesPaginatorKeySpecifier)[];
+export type LanguagesPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type MemberAccessLimitationKeySpecifier = ('company' | 'group' | 'group_roles' | 'id' | 'member' | 'module' | 'project' | 'provider' | 'see_own_applicants' | MemberAccessLimitationKeySpecifier)[];
+export type MemberAccessLimitationFieldPolicy = {
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	group?: FieldPolicy<any> | FieldReadFunction<any>,
+	group_roles?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	member?: FieldPolicy<any> | FieldReadFunction<any>,
+	module?: FieldPolicy<any> | FieldReadFunction<any>,
+	project?: FieldPolicy<any> | FieldReadFunction<any>,
+	provider?: FieldPolicy<any> | FieldReadFunction<any>,
+	see_own_applicants?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type MemberAccessLimitationPaginatorKeySpecifier = ('data' | 'paginatorInfo' | MemberAccessLimitationPaginatorKeySpecifier)[];
+export type MemberAccessLimitationPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type MemberProfileKeySpecifier = ('access_groups' | 'additional_fields' | 'additional_info_fields' | 'backup_codes' | 'company' | 'country' | 'department' | 'email' | 'first_name' | 'fullname' | 'google2fa_secret' | 'group' | 'id' | 'ip_addresses' | 'is_active' | 'is_show_owner_applicants' | 'is_sign_transaction' | 'language' | 'last_login_at' | 'last_name' | 'position' | 'security_pin' | 'sex' | 'two_factor_auth_setting_id' | 'two_factor_auth_settings' | MemberProfileKeySpecifier)[];
+export type MemberProfileFieldPolicy = {
+	access_groups?: FieldPolicy<any> | FieldReadFunction<any>,
+	additional_fields?: FieldPolicy<any> | FieldReadFunction<any>,
+	additional_info_fields?: FieldPolicy<any> | FieldReadFunction<any>,
+	backup_codes?: FieldPolicy<any> | FieldReadFunction<any>,
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	country?: FieldPolicy<any> | FieldReadFunction<any>,
+	department?: FieldPolicy<any> | FieldReadFunction<any>,
+	email?: FieldPolicy<any> | FieldReadFunction<any>,
+	first_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	fullname?: FieldPolicy<any> | FieldReadFunction<any>,
+	google2fa_secret?: FieldPolicy<any> | FieldReadFunction<any>,
+	group?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	ip_addresses?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_active?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_show_owner_applicants?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_sign_transaction?: FieldPolicy<any> | FieldReadFunction<any>,
+	language?: FieldPolicy<any> | FieldReadFunction<any>,
+	last_login_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	last_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
+	security_pin?: FieldPolicy<any> | FieldReadFunction<any>,
+	sex?: FieldPolicy<any> | FieldReadFunction<any>,
+	two_factor_auth_setting_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	two_factor_auth_settings?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type MemberStatusKeySpecifier = ('id' | 'name' | MemberStatusKeySpecifier)[];
+export type MemberStatusFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type MembersKeySpecifier = ('access_groups' | 'additional_fields' | 'additional_info_fields' | 'backup_codes' | 'company' | 'country' | 'created_at' | 'department' | 'email' | 'email_verification' | 'first_name' | 'fullname' | 'google2fa_secret' | 'group' | 'id' | 'ip_addresses' | 'is_show_owner_applicants' | 'is_sign_transaction' | 'job_title' | 'language' | 'last_login_at' | 'last_name' | 'member_status' | 'photo' | 'position' | 'security_pin' | 'sex' | 'two_factor_auth_setting_id' | 'two_factor_auth_settings' | MembersKeySpecifier)[];
+export type MembersFieldPolicy = {
+	access_groups?: FieldPolicy<any> | FieldReadFunction<any>,
+	additional_fields?: FieldPolicy<any> | FieldReadFunction<any>,
+	additional_info_fields?: FieldPolicy<any> | FieldReadFunction<any>,
+	backup_codes?: FieldPolicy<any> | FieldReadFunction<any>,
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	country?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	department?: FieldPolicy<any> | FieldReadFunction<any>,
+	email?: FieldPolicy<any> | FieldReadFunction<any>,
+	email_verification?: FieldPolicy<any> | FieldReadFunction<any>,
+	first_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	fullname?: FieldPolicy<any> | FieldReadFunction<any>,
+	google2fa_secret?: FieldPolicy<any> | FieldReadFunction<any>,
+	group?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	ip_addresses?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_show_owner_applicants?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_sign_transaction?: FieldPolicy<any> | FieldReadFunction<any>,
+	job_title?: FieldPolicy<any> | FieldReadFunction<any>,
+	language?: FieldPolicy<any> | FieldReadFunction<any>,
+	last_login_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	last_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	member_status?: FieldPolicy<any> | FieldReadFunction<any>,
+	photo?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
+	security_pin?: FieldPolicy<any> | FieldReadFunction<any>,
+	sex?: FieldPolicy<any> | FieldReadFunction<any>,
+	two_factor_auth_setting_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	two_factor_auth_settings?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type MembersPaginatorKeySpecifier = ('data' | 'paginatorInfo' | MembersPaginatorKeySpecifier)[];
+export type MembersPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ModuleKeySpecifier = ('id' | 'name' | ModuleKeySpecifier)[];
+export type ModuleFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type MutationKeySpecifier = ('addCompanyModule' | 'attachApplicantCompanyLabel' | 'attachApplicantDocumentTag' | 'attachApplicantIndividualLabel' | 'cancelTransferOutgoingFee' | 'createAccount' | 'createAccountLimit' | 'createApplicant' | 'createApplicantBankingAccess' | 'createApplicantCompany' | 'createApplicantCompanyBusinessType' | 'createApplicantCompanyLabel' | 'createApplicantCompanyModule' | 'createApplicantCompanyNote' | 'createApplicantCompanyRiskLevelHistory' | 'createApplicantDocument' | 'createApplicantDocumentInternalNote' | 'createApplicantDocumentRejectDetail' | 'createApplicantDocumentTag' | 'createApplicantDocumentTagCategory' | 'createApplicantIndividual' | 'createApplicantIndividualCompany' | 'createApplicantIndividualCompanyPosition' | 'createApplicantIndividualCompanyRelation' | 'createApplicantIndividualLabel' | 'createApplicantIndividualModule' | 'createApplicantIndividualNote' | 'createApplicantModule' | 'createApplicantRiskLevelHistory' | 'createApplicantStateReason' | 'createBankCorrespondent' | 'createBusinessActivity' | 'createCommissionPriceList' | 'createCommissionTemplate' | 'createCommissionTemplateLimit' | 'createCompany' | 'createCompanyModuleIbanProvider' | 'createCompanyModulePaymentProvider' | 'createDepartment' | 'createDepartmentPosition' | 'createDocumentType' | 'createEmailNotification' | 'createEmailSmtp' | 'createEmailTemplate' | 'createEmailTemplateLayout' | 'createGroupSettings' | 'createMember' | 'createMemberAccessLimitation' | 'createModule' | 'createPayment' | 'createPaymentBank' | 'createPaymentProvider' | 'createPaymentProviderIban' | 'createPaymentSystem' | 'createPriceListFees' | 'createProject' | 'createRegion' | 'createRole' | 'createTicket' | 'createTicketComment' | 'createTransferOutgoing' | 'createTransferOutgoingFee' | 'deleteAccount' | 'deleteAccountLimit' | 'deleteApplicantBankingAccess' | 'deleteApplicantBankingMember' | 'deleteApplicantCompany' | 'deleteApplicantCompanyLabel' | 'deleteApplicantCompanyModule' | 'deleteApplicantCompanyNote' | 'deleteApplicantCompanyRiskLevelHistory' | 'deleteApplicantDevice' | 'deleteApplicantDocument' | 'deleteApplicantDocumentInternalNote' | 'deleteApplicantDocumentRejectDetail' | 'deleteApplicantDocumentTag' | 'deleteApplicantDocumentTagCategory' | 'deleteApplicantIndividual' | 'deleteApplicantIndividualCompany' | 'deleteApplicantIndividualCompanyPosition' | 'deleteApplicantIndividualCompanyRelation' | 'deleteApplicantIndividualLabel' | 'deleteApplicantIndividualModule' | 'deleteApplicantIndividualNote' | 'deleteApplicantRiskLevelHistory' | 'deleteApplicantStateReason' | 'deleteBankCorrespondent' | 'deleteCommissionPriceList' | 'deleteCommissionTemplate' | 'deleteCommissionTemplateLimit' | 'deleteCompany' | 'deleteCompanyModule' | 'deleteCompanyModuleIbanProvider' | 'deleteCompanyModulePaymentProvider' | 'deleteDepartment' | 'deleteDepartmentPosition' | 'deleteDocumentType' | 'deleteEmailNotification' | 'deleteEmailSmtp' | 'deleteEmailTemplate' | 'deleteEmailTemplateLayout' | 'deleteFile' | 'deleteGroup' | 'deleteMember' | 'deleteMemberAccessLimitation' | 'deletePayment' | 'deletePaymentBank' | 'deletePaymentProvider' | 'deletePaymentProviderIban' | 'deletePaymentSystem' | 'deletePriceListFees' | 'deleteProject' | 'deleteRegion' | 'deleteRole' | 'deleteTagApplicantDocumentRejectDetail' | 'detachApplicantCompanyLabel' | 'detachApplicantDocumentTag' | 'detachApplicantIndividualLabel' | 'generateIban' | 'grantApplicantBankingAccess' | 'resetMemberPassword' | 'sendConfirmChangeEmail' | 'sendEmail' | 'sendEmailRegistation' | 'sendEmailResetPassword' | 'sendEmailVerification' | 'sendEmailVerificationApplicantCompany' | 'sendEmailWithTemplate' | 'sendMemberEmailVerification' | 'sendPhoneVerification' | 'sendPhoneVerificationApplicantCompany' | 'setApplicantIndividualPassword' | 'setApplicantSecurityPin' | 'setApplicantSettingsPassword' | 'setApplicantSettingsPasswordWithOtp' | 'setMemberActive' | 'setMemberGroup' | 'setMemberInactive' | 'setMemberPassword' | 'setMemberSecurityPin' | 'setMemberSuspended' | 'updateAccount' | 'updateAccountLimit' | 'updateActiveSession' | 'updateApplicantAccount' | 'updateApplicantBankingAccess' | 'updateApplicantCompany' | 'updateApplicantCompanyBusinessType' | 'updateApplicantCompanyLabel' | 'updateApplicantCompanyModule' | 'updateApplicantCompanyVerificationStatus' | 'updateApplicantDevice' | 'updateApplicantDeviceWithOtp' | 'updateApplicantDocument' | 'updateApplicantDocumentTag' | 'updateApplicantDocumentTagCategory' | 'updateApplicantIndividual' | 'updateApplicantIndividualCompany' | 'updateApplicantIndividualCompanyPosition' | 'updateApplicantIndividualCompanyRelation' | 'updateApplicantIndividualLabel' | 'updateApplicantIndividualModule' | 'updateApplicantIndividualVerificationStatus' | 'updateApplicantProfile' | 'updateApplicantStateReason' | 'updateBankCorrespondent' | 'updateBusinessActivity' | 'updateCommissionPriceList' | 'updateCommissionTemplate' | 'updateCommissionTemplateLimit' | 'updateCompany' | 'updateCompanyModule' | 'updateCompanyModuleIbanProvider' | 'updateCompanyModulePaymentProvider' | 'updateDepartment' | 'updateEmailNotification' | 'updateEmailSmtp' | 'updateEmailTemplate' | 'updateEmailTemplateLayout' | 'updateGroupSettings' | 'updateMember' | 'updateMemberAccessLimitation' | 'updateMemberProfile' | 'updatePayment' | 'updatePaymentBank' | 'updatePaymentProvider' | 'updatePaymentProviderIban' | 'updatePaymentSystem' | 'updatePriceListFees' | 'updateProject' | 'updateProjectApiSetting' | 'updateRegion' | 'updateRole' | 'updateTicket' | 'updateTransferOutgoing' | 'updateTransferOutgoingFee' | MutationKeySpecifier)[];
+export type MutationFieldPolicy = {
+	addCompanyModule?: FieldPolicy<any> | FieldReadFunction<any>,
+	attachApplicantCompanyLabel?: FieldPolicy<any> | FieldReadFunction<any>,
+	attachApplicantDocumentTag?: FieldPolicy<any> | FieldReadFunction<any>,
+	attachApplicantIndividualLabel?: FieldPolicy<any> | FieldReadFunction<any>,
+	cancelTransferOutgoingFee?: FieldPolicy<any> | FieldReadFunction<any>,
+	createAccount?: FieldPolicy<any> | FieldReadFunction<any>,
+	createAccountLimit?: FieldPolicy<any> | FieldReadFunction<any>,
+	createApplicant?: FieldPolicy<any> | FieldReadFunction<any>,
+	createApplicantBankingAccess?: FieldPolicy<any> | FieldReadFunction<any>,
+	createApplicantCompany?: FieldPolicy<any> | FieldReadFunction<any>,
+	createApplicantCompanyBusinessType?: FieldPolicy<any> | FieldReadFunction<any>,
+	createApplicantCompanyLabel?: FieldPolicy<any> | FieldReadFunction<any>,
+	createApplicantCompanyModule?: FieldPolicy<any> | FieldReadFunction<any>,
+	createApplicantCompanyNote?: FieldPolicy<any> | FieldReadFunction<any>,
+	createApplicantCompanyRiskLevelHistory?: FieldPolicy<any> | FieldReadFunction<any>,
+	createApplicantDocument?: FieldPolicy<any> | FieldReadFunction<any>,
+	createApplicantDocumentInternalNote?: FieldPolicy<any> | FieldReadFunction<any>,
+	createApplicantDocumentRejectDetail?: FieldPolicy<any> | FieldReadFunction<any>,
+	createApplicantDocumentTag?: FieldPolicy<any> | FieldReadFunction<any>,
+	createApplicantDocumentTagCategory?: FieldPolicy<any> | FieldReadFunction<any>,
+	createApplicantIndividual?: FieldPolicy<any> | FieldReadFunction<any>,
+	createApplicantIndividualCompany?: FieldPolicy<any> | FieldReadFunction<any>,
+	createApplicantIndividualCompanyPosition?: FieldPolicy<any> | FieldReadFunction<any>,
+	createApplicantIndividualCompanyRelation?: FieldPolicy<any> | FieldReadFunction<any>,
+	createApplicantIndividualLabel?: FieldPolicy<any> | FieldReadFunction<any>,
+	createApplicantIndividualModule?: FieldPolicy<any> | FieldReadFunction<any>,
+	createApplicantIndividualNote?: FieldPolicy<any> | FieldReadFunction<any>,
+	createApplicantModule?: FieldPolicy<any> | FieldReadFunction<any>,
+	createApplicantRiskLevelHistory?: FieldPolicy<any> | FieldReadFunction<any>,
+	createApplicantStateReason?: FieldPolicy<any> | FieldReadFunction<any>,
+	createBankCorrespondent?: FieldPolicy<any> | FieldReadFunction<any>,
+	createBusinessActivity?: FieldPolicy<any> | FieldReadFunction<any>,
+	createCommissionPriceList?: FieldPolicy<any> | FieldReadFunction<any>,
+	createCommissionTemplate?: FieldPolicy<any> | FieldReadFunction<any>,
+	createCommissionTemplateLimit?: FieldPolicy<any> | FieldReadFunction<any>,
+	createCompany?: FieldPolicy<any> | FieldReadFunction<any>,
+	createCompanyModuleIbanProvider?: FieldPolicy<any> | FieldReadFunction<any>,
+	createCompanyModulePaymentProvider?: FieldPolicy<any> | FieldReadFunction<any>,
+	createDepartment?: FieldPolicy<any> | FieldReadFunction<any>,
+	createDepartmentPosition?: FieldPolicy<any> | FieldReadFunction<any>,
+	createDocumentType?: FieldPolicy<any> | FieldReadFunction<any>,
+	createEmailNotification?: FieldPolicy<any> | FieldReadFunction<any>,
+	createEmailSmtp?: FieldPolicy<any> | FieldReadFunction<any>,
+	createEmailTemplate?: FieldPolicy<any> | FieldReadFunction<any>,
+	createEmailTemplateLayout?: FieldPolicy<any> | FieldReadFunction<any>,
+	createGroupSettings?: FieldPolicy<any> | FieldReadFunction<any>,
+	createMember?: FieldPolicy<any> | FieldReadFunction<any>,
+	createMemberAccessLimitation?: FieldPolicy<any> | FieldReadFunction<any>,
+	createModule?: FieldPolicy<any> | FieldReadFunction<any>,
+	createPayment?: FieldPolicy<any> | FieldReadFunction<any>,
+	createPaymentBank?: FieldPolicy<any> | FieldReadFunction<any>,
+	createPaymentProvider?: FieldPolicy<any> | FieldReadFunction<any>,
+	createPaymentProviderIban?: FieldPolicy<any> | FieldReadFunction<any>,
+	createPaymentSystem?: FieldPolicy<any> | FieldReadFunction<any>,
+	createPriceListFees?: FieldPolicy<any> | FieldReadFunction<any>,
+	createProject?: FieldPolicy<any> | FieldReadFunction<any>,
+	createRegion?: FieldPolicy<any> | FieldReadFunction<any>,
+	createRole?: FieldPolicy<any> | FieldReadFunction<any>,
+	createTicket?: FieldPolicy<any> | FieldReadFunction<any>,
+	createTicketComment?: FieldPolicy<any> | FieldReadFunction<any>,
+	createTransferOutgoing?: FieldPolicy<any> | FieldReadFunction<any>,
+	createTransferOutgoingFee?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteAccount?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteAccountLimit?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteApplicantBankingAccess?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteApplicantBankingMember?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteApplicantCompany?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteApplicantCompanyLabel?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteApplicantCompanyModule?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteApplicantCompanyNote?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteApplicantCompanyRiskLevelHistory?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteApplicantDevice?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteApplicantDocument?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteApplicantDocumentInternalNote?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteApplicantDocumentRejectDetail?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteApplicantDocumentTag?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteApplicantDocumentTagCategory?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteApplicantIndividual?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteApplicantIndividualCompany?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteApplicantIndividualCompanyPosition?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteApplicantIndividualCompanyRelation?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteApplicantIndividualLabel?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteApplicantIndividualModule?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteApplicantIndividualNote?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteApplicantRiskLevelHistory?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteApplicantStateReason?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteBankCorrespondent?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteCommissionPriceList?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteCommissionTemplate?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteCommissionTemplateLimit?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteCompany?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteCompanyModule?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteCompanyModuleIbanProvider?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteCompanyModulePaymentProvider?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteDepartment?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteDepartmentPosition?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteDocumentType?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteEmailNotification?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteEmailSmtp?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteEmailTemplate?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteEmailTemplateLayout?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteFile?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteGroup?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteMember?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteMemberAccessLimitation?: FieldPolicy<any> | FieldReadFunction<any>,
+	deletePayment?: FieldPolicy<any> | FieldReadFunction<any>,
+	deletePaymentBank?: FieldPolicy<any> | FieldReadFunction<any>,
+	deletePaymentProvider?: FieldPolicy<any> | FieldReadFunction<any>,
+	deletePaymentProviderIban?: FieldPolicy<any> | FieldReadFunction<any>,
+	deletePaymentSystem?: FieldPolicy<any> | FieldReadFunction<any>,
+	deletePriceListFees?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteProject?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteRegion?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteRole?: FieldPolicy<any> | FieldReadFunction<any>,
+	deleteTagApplicantDocumentRejectDetail?: FieldPolicy<any> | FieldReadFunction<any>,
+	detachApplicantCompanyLabel?: FieldPolicy<any> | FieldReadFunction<any>,
+	detachApplicantDocumentTag?: FieldPolicy<any> | FieldReadFunction<any>,
+	detachApplicantIndividualLabel?: FieldPolicy<any> | FieldReadFunction<any>,
+	generateIban?: FieldPolicy<any> | FieldReadFunction<any>,
+	grantApplicantBankingAccess?: FieldPolicy<any> | FieldReadFunction<any>,
+	resetMemberPassword?: FieldPolicy<any> | FieldReadFunction<any>,
+	sendConfirmChangeEmail?: FieldPolicy<any> | FieldReadFunction<any>,
+	sendEmail?: FieldPolicy<any> | FieldReadFunction<any>,
+	sendEmailRegistation?: FieldPolicy<any> | FieldReadFunction<any>,
+	sendEmailResetPassword?: FieldPolicy<any> | FieldReadFunction<any>,
+	sendEmailVerification?: FieldPolicy<any> | FieldReadFunction<any>,
+	sendEmailVerificationApplicantCompany?: FieldPolicy<any> | FieldReadFunction<any>,
+	sendEmailWithTemplate?: FieldPolicy<any> | FieldReadFunction<any>,
+	sendMemberEmailVerification?: FieldPolicy<any> | FieldReadFunction<any>,
+	sendPhoneVerification?: FieldPolicy<any> | FieldReadFunction<any>,
+	sendPhoneVerificationApplicantCompany?: FieldPolicy<any> | FieldReadFunction<any>,
+	setApplicantIndividualPassword?: FieldPolicy<any> | FieldReadFunction<any>,
+	setApplicantSecurityPin?: FieldPolicy<any> | FieldReadFunction<any>,
+	setApplicantSettingsPassword?: FieldPolicy<any> | FieldReadFunction<any>,
+	setApplicantSettingsPasswordWithOtp?: FieldPolicy<any> | FieldReadFunction<any>,
+	setMemberActive?: FieldPolicy<any> | FieldReadFunction<any>,
+	setMemberGroup?: FieldPolicy<any> | FieldReadFunction<any>,
+	setMemberInactive?: FieldPolicy<any> | FieldReadFunction<any>,
+	setMemberPassword?: FieldPolicy<any> | FieldReadFunction<any>,
+	setMemberSecurityPin?: FieldPolicy<any> | FieldReadFunction<any>,
+	setMemberSuspended?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateAccount?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateAccountLimit?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateActiveSession?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateApplicantAccount?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateApplicantBankingAccess?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateApplicantCompany?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateApplicantCompanyBusinessType?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateApplicantCompanyLabel?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateApplicantCompanyModule?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateApplicantCompanyVerificationStatus?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateApplicantDevice?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateApplicantDeviceWithOtp?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateApplicantDocument?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateApplicantDocumentTag?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateApplicantDocumentTagCategory?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateApplicantIndividual?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateApplicantIndividualCompany?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateApplicantIndividualCompanyPosition?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateApplicantIndividualCompanyRelation?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateApplicantIndividualLabel?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateApplicantIndividualModule?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateApplicantIndividualVerificationStatus?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateApplicantProfile?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateApplicantStateReason?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateBankCorrespondent?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateBusinessActivity?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateCommissionPriceList?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateCommissionTemplate?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateCommissionTemplateLimit?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateCompany?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateCompanyModule?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateCompanyModuleIbanProvider?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateCompanyModulePaymentProvider?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateDepartment?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateEmailNotification?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateEmailSmtp?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateEmailTemplate?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateEmailTemplateLayout?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateGroupSettings?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateMember?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateMemberAccessLimitation?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateMemberProfile?: FieldPolicy<any> | FieldReadFunction<any>,
+	updatePayment?: FieldPolicy<any> | FieldReadFunction<any>,
+	updatePaymentBank?: FieldPolicy<any> | FieldReadFunction<any>,
+	updatePaymentProvider?: FieldPolicy<any> | FieldReadFunction<any>,
+	updatePaymentProviderIban?: FieldPolicy<any> | FieldReadFunction<any>,
+	updatePaymentSystem?: FieldPolicy<any> | FieldReadFunction<any>,
+	updatePriceListFees?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateProject?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateProjectApiSetting?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateRegion?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateRole?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateTicket?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateTransferOutgoing?: FieldPolicy<any> | FieldReadFunction<any>,
+	updateTransferOutgoingFee?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type OperationTypeKeySpecifier = ('id' | 'name' | OperationTypeKeySpecifier)[];
+export type OperationTypeFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type PageInfoKeySpecifier = ('count' | 'currentPage' | 'endCursor' | 'hasNextPage' | 'hasPreviousPage' | 'lastPage' | 'startCursor' | 'total' | PageInfoKeySpecifier)[];
+export type PageInfoFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	currentPage?: FieldPolicy<any> | FieldReadFunction<any>,
+	endCursor?: FieldPolicy<any> | FieldReadFunction<any>,
+	hasNextPage?: FieldPolicy<any> | FieldReadFunction<any>,
+	hasPreviousPage?: FieldPolicy<any> | FieldReadFunction<any>,
+	lastPage?: FieldPolicy<any> | FieldReadFunction<any>,
+	startCursor?: FieldPolicy<any> | FieldReadFunction<any>,
+	total?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type PaginatorInfoKeySpecifier = ('count' | 'currentPage' | 'firstItem' | 'hasMorePages' | 'lastItem' | 'lastPage' | 'perPage' | 'total' | PaginatorInfoKeySpecifier)[];
+export type PaginatorInfoFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	currentPage?: FieldPolicy<any> | FieldReadFunction<any>,
+	firstItem?: FieldPolicy<any> | FieldReadFunction<any>,
+	hasMorePages?: FieldPolicy<any> | FieldReadFunction<any>,
+	lastItem?: FieldPolicy<any> | FieldReadFunction<any>,
+	lastPage?: FieldPolicy<any> | FieldReadFunction<any>,
+	perPage?: FieldPolicy<any> | FieldReadFunction<any>,
+	total?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type PaymentBankKeySpecifier = ('address' | 'bank_code' | 'bank_correspondent' | 'country' | 'id' | 'is_active' | 'name' | 'payment_provider' | 'payment_system' | 'payment_system_code' | PaymentBankKeySpecifier)[];
+export type PaymentBankFieldPolicy = {
+	address?: FieldPolicy<any> | FieldReadFunction<any>,
+	bank_code?: FieldPolicy<any> | FieldReadFunction<any>,
+	bank_correspondent?: FieldPolicy<any> | FieldReadFunction<any>,
+	country?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_active?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_provider?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_system?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_system_code?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type PaymentBankPaginatorKeySpecifier = ('data' | 'paginatorInfo' | PaymentBankPaginatorKeySpecifier)[];
+export type PaymentBankPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type PaymentProviderKeySpecifier = ('commission_price_list' | 'company' | 'description' | 'id' | 'is_active' | 'logo' | 'name' | 'payment_systems' | PaymentProviderKeySpecifier)[];
+export type PaymentProviderFieldPolicy = {
+	commission_price_list?: FieldPolicy<any> | FieldReadFunction<any>,
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	description?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_active?: FieldPolicy<any> | FieldReadFunction<any>,
+	logo?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_systems?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type PaymentProviderHistoryKeySpecifier = ('created_at' | 'id' | 'payment_provider_id' | 'provider_response' | 'transfer_id' | 'transfer_type' | PaymentProviderHistoryKeySpecifier)[];
+export type PaymentProviderHistoryFieldPolicy = {
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_provider_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	provider_response?: FieldPolicy<any> | FieldReadFunction<any>,
+	transfer_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	transfer_type?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type PaymentProviderIbanKeySpecifier = ('company' | 'currency' | 'id' | 'is_active' | 'name' | PaymentProviderIbanKeySpecifier)[];
+export type PaymentProviderIbanFieldPolicy = {
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	currency?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_active?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type PaymentProviderIbanPaginatorKeySpecifier = ('data' | 'paginatorInfo' | PaymentProviderIbanPaginatorKeySpecifier)[];
+export type PaymentProviderIbanPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type PaymentProviderPaginatorKeySpecifier = ('data' | 'paginatorInfo' | PaymentProviderPaginatorKeySpecifier)[];
+export type PaymentProviderPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type PaymentStatusKeySpecifier = ('id' | 'name' | PaymentStatusKeySpecifier)[];
+export type PaymentStatusFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type PaymentSystemKeySpecifier = ('bank_correspondent' | 'banks' | 'company' | 'currencies' | 'description' | 'id' | 'is_active' | 'logo' | 'name' | 'operations' | 'providers' | 'regions' | PaymentSystemKeySpecifier)[];
+export type PaymentSystemFieldPolicy = {
+	bank_correspondent?: FieldPolicy<any> | FieldReadFunction<any>,
+	banks?: FieldPolicy<any> | FieldReadFunction<any>,
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	currencies?: FieldPolicy<any> | FieldReadFunction<any>,
+	description?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_active?: FieldPolicy<any> | FieldReadFunction<any>,
+	logo?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	operations?: FieldPolicy<any> | FieldReadFunction<any>,
+	providers?: FieldPolicy<any> | FieldReadFunction<any>,
+	regions?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type PaymentSystemPaginatorKeySpecifier = ('data' | 'paginatorInfo' | PaymentSystemPaginatorKeySpecifier)[];
+export type PaymentSystemPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type PaymentUrgencyKeySpecifier = ('id' | 'name' | PaymentUrgencyKeySpecifier)[];
+export type PaymentUrgencyFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type PaymentsKeySpecifier = ('account' | 'amount' | 'amount_real' | 'beneficiary_additional_data' | 'beneficiary_address' | 'beneficiary_city' | 'beneficiary_country' | 'beneficiary_name' | 'beneficiary_state' | 'beneficiary_zip' | 'company' | 'created_at' | 'currency' | 'error' | 'execution_at' | 'fee' | 'fee_type' | 'id' | 'member' | 'payment_number' | 'payment_operation_type' | 'payment_provider' | 'payment_urgency' | 'price_list_fees' | 'received_at' | 'recipient_account' | 'recipient_bank_address' | 'recipient_bank_country' | 'recipient_bank_name' | 'recipient_bank_swift' | 'respondent_fee' | 'status' | 'status_id' | 'updated_at' | PaymentsKeySpecifier)[];
+export type PaymentsFieldPolicy = {
+	account?: FieldPolicy<any> | FieldReadFunction<any>,
+	amount?: FieldPolicy<any> | FieldReadFunction<any>,
+	amount_real?: FieldPolicy<any> | FieldReadFunction<any>,
+	beneficiary_additional_data?: FieldPolicy<any> | FieldReadFunction<any>,
+	beneficiary_address?: FieldPolicy<any> | FieldReadFunction<any>,
+	beneficiary_city?: FieldPolicy<any> | FieldReadFunction<any>,
+	beneficiary_country?: FieldPolicy<any> | FieldReadFunction<any>,
+	beneficiary_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	beneficiary_state?: FieldPolicy<any> | FieldReadFunction<any>,
+	beneficiary_zip?: FieldPolicy<any> | FieldReadFunction<any>,
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	currency?: FieldPolicy<any> | FieldReadFunction<any>,
+	error?: FieldPolicy<any> | FieldReadFunction<any>,
+	execution_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	fee?: FieldPolicy<any> | FieldReadFunction<any>,
+	fee_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	member?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_number?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_operation_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_provider?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_urgency?: FieldPolicy<any> | FieldReadFunction<any>,
+	price_list_fees?: FieldPolicy<any> | FieldReadFunction<any>,
+	received_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	recipient_account?: FieldPolicy<any> | FieldReadFunction<any>,
+	recipient_bank_address?: FieldPolicy<any> | FieldReadFunction<any>,
+	recipient_bank_country?: FieldPolicy<any> | FieldReadFunction<any>,
+	recipient_bank_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	recipient_bank_swift?: FieldPolicy<any> | FieldReadFunction<any>,
+	respondent_fee?: FieldPolicy<any> | FieldReadFunction<any>,
+	status?: FieldPolicy<any> | FieldReadFunction<any>,
+	status_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type PaymentsPaginatorKeySpecifier = ('data' | 'paginatorInfo' | PaymentsPaginatorKeySpecifier)[];
+export type PaymentsPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type PermissionAuthKeySpecifier = ('PERMISSION_ACCOUNT_DETAILS' | 'PERMISSION_DASHBOARD' | 'PERMISSION_MAKE_PAYMENTS' | 'PERMISSION_MY_NET_WORTH' | 'PERMISSION_MY_TEMPLATES' | 'PERMISSION_PAYMENT_DETAILS' | 'PERMISSION_PAYMENT_LIST' | 'PERMISSION_REQUISITES' | 'PERMISSION_SETTINGS_ACCOUNT' | 'PERMISSION_SETTINGS_CONTACT_DETAILS' | 'PERMISSION_SETTINGS_LOG_IN_DETAILS' | 'PERMISSION_SETTINGS_SECURITY_LEVEL' | 'PERMISSION_STATEMENTS' | 'PERMISSION_TICKETS' | PermissionAuthKeySpecifier)[];
+export type PermissionAuthFieldPolicy = {
+	PERMISSION_ACCOUNT_DETAILS?: FieldPolicy<any> | FieldReadFunction<any>,
+	PERMISSION_DASHBOARD?: FieldPolicy<any> | FieldReadFunction<any>,
+	PERMISSION_MAKE_PAYMENTS?: FieldPolicy<any> | FieldReadFunction<any>,
+	PERMISSION_MY_NET_WORTH?: FieldPolicy<any> | FieldReadFunction<any>,
+	PERMISSION_MY_TEMPLATES?: FieldPolicy<any> | FieldReadFunction<any>,
+	PERMISSION_PAYMENT_DETAILS?: FieldPolicy<any> | FieldReadFunction<any>,
+	PERMISSION_PAYMENT_LIST?: FieldPolicy<any> | FieldReadFunction<any>,
+	PERMISSION_REQUISITES?: FieldPolicy<any> | FieldReadFunction<any>,
+	PERMISSION_SETTINGS_ACCOUNT?: FieldPolicy<any> | FieldReadFunction<any>,
+	PERMISSION_SETTINGS_CONTACT_DETAILS?: FieldPolicy<any> | FieldReadFunction<any>,
+	PERMISSION_SETTINGS_LOG_IN_DETAILS?: FieldPolicy<any> | FieldReadFunction<any>,
+	PERMISSION_SETTINGS_SECURITY_LEVEL?: FieldPolicy<any> | FieldReadFunction<any>,
+	PERMISSION_STATEMENTS?: FieldPolicy<any> | FieldReadFunction<any>,
+	PERMISSION_TICKETS?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type PermissionCategoryKeySpecifier = ('id' | 'name' | 'permissionList' | PermissionCategoryKeySpecifier)[];
+export type PermissionCategoryFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	permissionList?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type PermissionCategoryRoleKeySpecifier = ('is_all_companies' | 'permission_category_id' | 'role_id' | PermissionCategoryRoleKeySpecifier)[];
+export type PermissionCategoryRoleFieldPolicy = {
+	is_all_companies?: FieldPolicy<any> | FieldReadFunction<any>,
+	permission_category_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	role_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type PermissionListKeySpecifier = ('id' | 'name' | 'permissions' | 'separator' | 'type' | PermissionListKeySpecifier)[];
+export type PermissionListFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	permissions?: FieldPolicy<any> | FieldReadFunction<any>,
+	separator?: FieldPolicy<any> | FieldReadFunction<any>,
+	type?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type PermissionTypeKeySpecifier = ('PERMISSION_ACCOUNT_DETAILS' | 'PERMISSION_DASHBOARD' | 'PERMISSION_MAKE_PAYMENTS' | 'PERMISSION_MY_NET_WORTH' | 'PERMISSION_MY_TEMPLATES' | 'PERMISSION_PAYMENT_DETAILS' | 'PERMISSION_PAYMENT_LIST' | 'PERMISSION_REQUISITES' | 'PERMISSION_SETTINGS_ACCOUNT' | 'PERMISSION_SETTINGS_CONTACT_DETAILS' | 'PERMISSION_SETTINGS_LOG_IN_DETAILS' | 'PERMISSION_SETTINGS_SECURITY_LEVEL' | 'PERMISSION_STATEMENTS' | 'PERMISSION_TICKETS' | PermissionTypeKeySpecifier)[];
+export type PermissionTypeFieldPolicy = {
+	PERMISSION_ACCOUNT_DETAILS?: FieldPolicy<any> | FieldReadFunction<any>,
+	PERMISSION_DASHBOARD?: FieldPolicy<any> | FieldReadFunction<any>,
+	PERMISSION_MAKE_PAYMENTS?: FieldPolicy<any> | FieldReadFunction<any>,
+	PERMISSION_MY_NET_WORTH?: FieldPolicy<any> | FieldReadFunction<any>,
+	PERMISSION_MY_TEMPLATES?: FieldPolicy<any> | FieldReadFunction<any>,
+	PERMISSION_PAYMENT_DETAILS?: FieldPolicy<any> | FieldReadFunction<any>,
+	PERMISSION_PAYMENT_LIST?: FieldPolicy<any> | FieldReadFunction<any>,
+	PERMISSION_REQUISITES?: FieldPolicy<any> | FieldReadFunction<any>,
+	PERMISSION_SETTINGS_ACCOUNT?: FieldPolicy<any> | FieldReadFunction<any>,
+	PERMISSION_SETTINGS_CONTACT_DETAILS?: FieldPolicy<any> | FieldReadFunction<any>,
+	PERMISSION_SETTINGS_LOG_IN_DETAILS?: FieldPolicy<any> | FieldReadFunction<any>,
+	PERMISSION_SETTINGS_SECURITY_LEVEL?: FieldPolicy<any> | FieldReadFunction<any>,
+	PERMISSION_STATEMENTS?: FieldPolicy<any> | FieldReadFunction<any>,
+	PERMISSION_TICKETS?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type PermissionsKeySpecifier = ('all' | 'display_name' | 'guard_name' | 'id' | 'name' | 'type' | PermissionsKeySpecifier)[];
+export type PermissionsFieldPolicy = {
+	all?: FieldPolicy<any> | FieldReadFunction<any>,
+	display_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	guard_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	type?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type PriceListFeeKeySpecifier = ('created_at' | 'fee_ranges' | 'fee_type' | 'fees' | 'id' | 'name' | 'operation_type' | 'period' | 'price_list_id' | 'scheduled' | 'updated_at' | PriceListFeeKeySpecifier)[];
+export type PriceListFeeFieldPolicy = {
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	fee_ranges?: FieldPolicy<any> | FieldReadFunction<any>,
+	fee_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	fees?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	operation_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	period?: FieldPolicy<any> | FieldReadFunction<any>,
+	price_list_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	scheduled?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type PriceListFeeCurrencyKeySpecifier = ('currency_id' | 'fee' | 'id' | 'price_list_fee_id' | PriceListFeeCurrencyKeySpecifier)[];
+export type PriceListFeeCurrencyFieldPolicy = {
+	currency_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	fee?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	price_list_fee_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type PriceListFeeScheduledKeySpecifier = ('end_date' | 'end_date_id' | 'recurrent_interval' | 'starting_date' | 'starting_date_id' | PriceListFeeScheduledKeySpecifier)[];
+export type PriceListFeeScheduledFieldPolicy = {
+	end_date?: FieldPolicy<any> | FieldReadFunction<any>,
+	end_date_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	recurrent_interval?: FieldPolicy<any> | FieldReadFunction<any>,
+	starting_date?: FieldPolicy<any> | FieldReadFunction<any>,
+	starting_date_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ProjectKeySpecifier = ('additional_fields_basic' | 'additional_fields_settings' | 'avatar' | 'client_url' | 'company' | 'created_at' | 'description' | 'forgot_password_url' | 'id' | 'login_url' | 'module' | 'name' | 'project_api_settings' | 'project_settings' | 'sms_sender_name' | 'state' | 'support_email' | 'updated_at' | 'url' | ProjectKeySpecifier)[];
+export type ProjectFieldPolicy = {
+	additional_fields_basic?: FieldPolicy<any> | FieldReadFunction<any>,
+	additional_fields_settings?: FieldPolicy<any> | FieldReadFunction<any>,
+	avatar?: FieldPolicy<any> | FieldReadFunction<any>,
+	client_url?: FieldPolicy<any> | FieldReadFunction<any>,
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	description?: FieldPolicy<any> | FieldReadFunction<any>,
+	forgot_password_url?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	login_url?: FieldPolicy<any> | FieldReadFunction<any>,
+	module?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	project_api_settings?: FieldPolicy<any> | FieldReadFunction<any>,
+	project_settings?: FieldPolicy<any> | FieldReadFunction<any>,
+	sms_sender_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	state?: FieldPolicy<any> | FieldReadFunction<any>,
+	support_email?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	url?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ProjectApiSettingKeySpecifier = ('api_key' | 'id' | 'is_active' | 'password' | 'project' | 'provider' | 'wallet' | ProjectApiSettingKeySpecifier)[];
+export type ProjectApiSettingFieldPolicy = {
+	api_key?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_active?: FieldPolicy<any> | FieldReadFunction<any>,
+	password?: FieldPolicy<any> | FieldReadFunction<any>,
+	project?: FieldPolicy<any> | FieldReadFunction<any>,
+	provider?: FieldPolicy<any> | FieldReadFunction<any>,
+	wallet?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ProjectApiSettingPasswordKeySpecifier = ('id' | 'password' | ProjectApiSettingPasswordKeySpecifier)[];
+export type ProjectApiSettingPasswordFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	password?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ProjectPaginatorKeySpecifier = ('data' | 'paginatorInfo' | ProjectPaginatorKeySpecifier)[];
+export type ProjectPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ProjectSettingsKeySpecifier = ('applicant_type' | 'commission_template' | 'group_role' | 'group_type' | 'iban_provider' | 'payment_provider' | ProjectSettingsKeySpecifier)[];
+export type ProjectSettingsFieldPolicy = {
+	applicant_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	commission_template?: FieldPolicy<any> | FieldReadFunction<any>,
+	group_role?: FieldPolicy<any> | FieldReadFunction<any>,
+	group_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	iban_provider?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_provider?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type QueryKeySpecifier = ('account' | 'accountLimit' | 'accountLimits' | 'accountList' | 'accountReachedLimit' | 'accountReachedLimits' | 'accountStatement' | 'accountStates' | 'activeSessions' | 'activityLogs' | 'applicantAccounts' | 'applicantBankingAccess' | 'applicantBankingAccesses' | 'applicantCompanies' | 'applicantCompany' | 'applicantCompanyBusinessType' | 'applicantCompanyLabel' | 'applicantCompanyLabels' | 'applicantCompanyLabelsAvailable' | 'applicantCompanyModules' | 'applicantCompanyNote' | 'applicantCompanyNotes' | 'applicantCompanyRiskLevelHistory' | 'applicantDevices' | 'applicantDocument' | 'applicantDocumentInternalNotes' | 'applicantDocumentTagCategories' | 'applicantDocumentTags' | 'applicantDocuments' | 'applicantIndividual' | 'applicantIndividualCompanyPosition' | 'applicantIndividualCompanyPositions' | 'applicantIndividualCompanyRelation' | 'applicantIndividualCompanyRelations' | 'applicantIndividualLabel' | 'applicantIndividualLabels' | 'applicantIndividualLabelsAvailable' | 'applicantIndividualModules' | 'applicantIndividualNote' | 'applicantIndividualNotes' | 'applicantIndividuals' | 'applicantKycLevel' | 'applicantKycLevels' | 'applicantLinkedCompanies' | 'applicantProfile' | 'applicantRequisite' | 'applicantRequisites' | 'applicantRiskLevel' | 'applicantRiskLevelHistory' | 'applicantRiskLevels' | 'applicantState' | 'applicantStateReason' | 'applicantStateReasons' | 'applicantStates' | 'applicantStatus' | 'applicantStatuses' | 'applicantVerificationStatuses' | 'applicant_module' | 'applicant_modules' | 'authenticationLogs' | 'authenticationMemberLogs' | 'bankCorrespondent' | 'bankCorrespondents' | 'businessActivities' | 'businessActivity' | 'clientList' | 'commissionPriceList' | 'commissionPriceLists' | 'commissionTemplate' | 'commissionTemplateLimit' | 'commissionTemplateLimitActionType' | 'commissionTemplateLimitActionTypes' | 'commissionTemplateLimitPeriod' | 'commissionTemplateLimitPeriods' | 'commissionTemplateLimitTransferDirection' | 'commissionTemplateLimitTransferDirections' | 'commissionTemplateLimitType' | 'commissionTemplateLimitTypes' | 'commissionTemplateLimits' | 'commissionTemplates' | 'companies' | 'company' | 'companyModuleIbanProviderPassword' | 'companyModuleProviderPassword' | 'companyModules' | 'countries' | 'country' | 'currencies' | 'currency' | 'dashboardAccountsStatistic' | 'dashboardTicketsStatistic' | 'dashboardTransfersStatistic' | 'dashboardUsersStatistic' | 'department' | 'departmentPosition' | 'departmentPositions' | 'departments' | 'documentStates' | 'documentTypes' | 'downloadAccountStatementCsv' | 'downloadAccountStatementPdf' | 'downloadAccountStatementXls' | 'downloadApplicantRequisiteDetails' | 'downloadRequisiteDetails' | 'emailNotification' | 'emailNotifications' | 'emailSmtp' | 'emailSmtps' | 'emailTemplate' | 'emailTemplateLayout' | 'emailTemplates' | 'employees' | 'feeDetails' | 'feeModes' | 'feePeriods' | 'feeTypes' | 'file' | 'files' | 'getMatchedApplicantIndividuals' | 'getMatchedUsers' | 'getPaymentUrgencys' | 'getTicketComments' | 'grantedBankingAccess' | 'groupList' | 'groupTypeList' | 'group_type' | 'group_types' | 'groups' | 'kycTimeline' | 'kycTimelines' | 'language' | 'languages' | 'member' | 'memberAccessLimitation' | 'memberAccessLimitations' | 'memberProfile' | 'memberStatuses' | 'members' | 'module' | 'modules' | 'modulesWithKyc' | 'operationTypes' | 'owners' | 'payment' | 'paymentBank' | 'paymentBanks' | 'paymentProvider' | 'paymentProviderIban' | 'paymentProviderIbans' | 'paymentProviders' | 'paymentStatuses' | 'paymentSystem' | 'paymentSystems' | 'paymentSystemsList' | 'payments' | 'permission' | 'permissions' | 'permissions_tree' | 'priceListFees' | 'project' | 'projectApiSettingPassword' | 'projectApiSettings' | 'projects' | 'region' | 'regions' | 'requisite' | 'requisites' | 'respondentFees' | 'role' | 'roles' | 'sendApplicantRequisiteDetails' | 'sendRequisiteDetails' | 'senders' | 'stateReasons' | 'states' | 'ticket' | 'ticketComment' | 'tickets' | 'transferIncoming' | 'transferIncomingHistory' | 'transferIncomings' | 'transferIncomingsStatistic' | 'transferOutgoing' | 'transferOutgoingHistory' | 'transferOutgoings' | 'transferOutgoingsStatistic' | 'twoFactorAuth' | 'twoFactorsAuth' | 'typeOfIndustries' | 'userAuthData' | 'users' | QueryKeySpecifier)[];
+export type QueryFieldPolicy = {
+	account?: FieldPolicy<any> | FieldReadFunction<any>,
+	accountLimit?: FieldPolicy<any> | FieldReadFunction<any>,
+	accountLimits?: FieldPolicy<any> | FieldReadFunction<any>,
+	accountList?: FieldPolicy<any> | FieldReadFunction<any>,
+	accountReachedLimit?: FieldPolicy<any> | FieldReadFunction<any>,
+	accountReachedLimits?: FieldPolicy<any> | FieldReadFunction<any>,
+	accountStatement?: FieldPolicy<any> | FieldReadFunction<any>,
+	accountStates?: FieldPolicy<any> | FieldReadFunction<any>,
+	activeSessions?: FieldPolicy<any> | FieldReadFunction<any>,
+	activityLogs?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantAccounts?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantBankingAccess?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantBankingAccesses?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantCompanies?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantCompany?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantCompanyBusinessType?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantCompanyLabel?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantCompanyLabels?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantCompanyLabelsAvailable?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantCompanyModules?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantCompanyNote?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantCompanyNotes?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantCompanyRiskLevelHistory?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantDevices?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantDocument?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantDocumentInternalNotes?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantDocumentTagCategories?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantDocumentTags?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantDocuments?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantIndividual?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantIndividualCompanyPosition?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantIndividualCompanyPositions?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantIndividualCompanyRelation?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantIndividualCompanyRelations?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantIndividualLabel?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantIndividualLabels?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantIndividualLabelsAvailable?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantIndividualModules?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantIndividualNote?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantIndividualNotes?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantIndividuals?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantKycLevel?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantKycLevels?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantLinkedCompanies?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantProfile?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantRequisite?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantRequisites?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantRiskLevel?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantRiskLevelHistory?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantRiskLevels?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantState?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantStateReason?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantStateReasons?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantStates?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantStatus?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantStatuses?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicantVerificationStatuses?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicant_module?: FieldPolicy<any> | FieldReadFunction<any>,
+	applicant_modules?: FieldPolicy<any> | FieldReadFunction<any>,
+	authenticationLogs?: FieldPolicy<any> | FieldReadFunction<any>,
+	authenticationMemberLogs?: FieldPolicy<any> | FieldReadFunction<any>,
+	bankCorrespondent?: FieldPolicy<any> | FieldReadFunction<any>,
+	bankCorrespondents?: FieldPolicy<any> | FieldReadFunction<any>,
+	businessActivities?: FieldPolicy<any> | FieldReadFunction<any>,
+	businessActivity?: FieldPolicy<any> | FieldReadFunction<any>,
+	clientList?: FieldPolicy<any> | FieldReadFunction<any>,
+	commissionPriceList?: FieldPolicy<any> | FieldReadFunction<any>,
+	commissionPriceLists?: FieldPolicy<any> | FieldReadFunction<any>,
+	commissionTemplate?: FieldPolicy<any> | FieldReadFunction<any>,
+	commissionTemplateLimit?: FieldPolicy<any> | FieldReadFunction<any>,
+	commissionTemplateLimitActionType?: FieldPolicy<any> | FieldReadFunction<any>,
+	commissionTemplateLimitActionTypes?: FieldPolicy<any> | FieldReadFunction<any>,
+	commissionTemplateLimitPeriod?: FieldPolicy<any> | FieldReadFunction<any>,
+	commissionTemplateLimitPeriods?: FieldPolicy<any> | FieldReadFunction<any>,
+	commissionTemplateLimitTransferDirection?: FieldPolicy<any> | FieldReadFunction<any>,
+	commissionTemplateLimitTransferDirections?: FieldPolicy<any> | FieldReadFunction<any>,
+	commissionTemplateLimitType?: FieldPolicy<any> | FieldReadFunction<any>,
+	commissionTemplateLimitTypes?: FieldPolicy<any> | FieldReadFunction<any>,
+	commissionTemplateLimits?: FieldPolicy<any> | FieldReadFunction<any>,
+	commissionTemplates?: FieldPolicy<any> | FieldReadFunction<any>,
+	companies?: FieldPolicy<any> | FieldReadFunction<any>,
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	companyModuleIbanProviderPassword?: FieldPolicy<any> | FieldReadFunction<any>,
+	companyModuleProviderPassword?: FieldPolicy<any> | FieldReadFunction<any>,
+	companyModules?: FieldPolicy<any> | FieldReadFunction<any>,
+	countries?: FieldPolicy<any> | FieldReadFunction<any>,
+	country?: FieldPolicy<any> | FieldReadFunction<any>,
+	currencies?: FieldPolicy<any> | FieldReadFunction<any>,
+	currency?: FieldPolicy<any> | FieldReadFunction<any>,
+	dashboardAccountsStatistic?: FieldPolicy<any> | FieldReadFunction<any>,
+	dashboardTicketsStatistic?: FieldPolicy<any> | FieldReadFunction<any>,
+	dashboardTransfersStatistic?: FieldPolicy<any> | FieldReadFunction<any>,
+	dashboardUsersStatistic?: FieldPolicy<any> | FieldReadFunction<any>,
+	department?: FieldPolicy<any> | FieldReadFunction<any>,
+	departmentPosition?: FieldPolicy<any> | FieldReadFunction<any>,
+	departmentPositions?: FieldPolicy<any> | FieldReadFunction<any>,
+	departments?: FieldPolicy<any> | FieldReadFunction<any>,
+	documentStates?: FieldPolicy<any> | FieldReadFunction<any>,
+	documentTypes?: FieldPolicy<any> | FieldReadFunction<any>,
+	downloadAccountStatementCsv?: FieldPolicy<any> | FieldReadFunction<any>,
+	downloadAccountStatementPdf?: FieldPolicy<any> | FieldReadFunction<any>,
+	downloadAccountStatementXls?: FieldPolicy<any> | FieldReadFunction<any>,
+	downloadApplicantRequisiteDetails?: FieldPolicy<any> | FieldReadFunction<any>,
+	downloadRequisiteDetails?: FieldPolicy<any> | FieldReadFunction<any>,
+	emailNotification?: FieldPolicy<any> | FieldReadFunction<any>,
+	emailNotifications?: FieldPolicy<any> | FieldReadFunction<any>,
+	emailSmtp?: FieldPolicy<any> | FieldReadFunction<any>,
+	emailSmtps?: FieldPolicy<any> | FieldReadFunction<any>,
+	emailTemplate?: FieldPolicy<any> | FieldReadFunction<any>,
+	emailTemplateLayout?: FieldPolicy<any> | FieldReadFunction<any>,
+	emailTemplates?: FieldPolicy<any> | FieldReadFunction<any>,
+	employees?: FieldPolicy<any> | FieldReadFunction<any>,
+	feeDetails?: FieldPolicy<any> | FieldReadFunction<any>,
+	feeModes?: FieldPolicy<any> | FieldReadFunction<any>,
+	feePeriods?: FieldPolicy<any> | FieldReadFunction<any>,
+	feeTypes?: FieldPolicy<any> | FieldReadFunction<any>,
+	file?: FieldPolicy<any> | FieldReadFunction<any>,
+	files?: FieldPolicy<any> | FieldReadFunction<any>,
+	getMatchedApplicantIndividuals?: FieldPolicy<any> | FieldReadFunction<any>,
+	getMatchedUsers?: FieldPolicy<any> | FieldReadFunction<any>,
+	getPaymentUrgencys?: FieldPolicy<any> | FieldReadFunction<any>,
+	getTicketComments?: FieldPolicy<any> | FieldReadFunction<any>,
+	grantedBankingAccess?: FieldPolicy<any> | FieldReadFunction<any>,
+	groupList?: FieldPolicy<any> | FieldReadFunction<any>,
+	groupTypeList?: FieldPolicy<any> | FieldReadFunction<any>,
+	group_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	group_types?: FieldPolicy<any> | FieldReadFunction<any>,
+	groups?: FieldPolicy<any> | FieldReadFunction<any>,
+	kycTimeline?: FieldPolicy<any> | FieldReadFunction<any>,
+	kycTimelines?: FieldPolicy<any> | FieldReadFunction<any>,
+	language?: FieldPolicy<any> | FieldReadFunction<any>,
+	languages?: FieldPolicy<any> | FieldReadFunction<any>,
+	member?: FieldPolicy<any> | FieldReadFunction<any>,
+	memberAccessLimitation?: FieldPolicy<any> | FieldReadFunction<any>,
+	memberAccessLimitations?: FieldPolicy<any> | FieldReadFunction<any>,
+	memberProfile?: FieldPolicy<any> | FieldReadFunction<any>,
+	memberStatuses?: FieldPolicy<any> | FieldReadFunction<any>,
+	members?: FieldPolicy<any> | FieldReadFunction<any>,
+	module?: FieldPolicy<any> | FieldReadFunction<any>,
+	modules?: FieldPolicy<any> | FieldReadFunction<any>,
+	modulesWithKyc?: FieldPolicy<any> | FieldReadFunction<any>,
+	operationTypes?: FieldPolicy<any> | FieldReadFunction<any>,
+	owners?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment?: FieldPolicy<any> | FieldReadFunction<any>,
+	paymentBank?: FieldPolicy<any> | FieldReadFunction<any>,
+	paymentBanks?: FieldPolicy<any> | FieldReadFunction<any>,
+	paymentProvider?: FieldPolicy<any> | FieldReadFunction<any>,
+	paymentProviderIban?: FieldPolicy<any> | FieldReadFunction<any>,
+	paymentProviderIbans?: FieldPolicy<any> | FieldReadFunction<any>,
+	paymentProviders?: FieldPolicy<any> | FieldReadFunction<any>,
+	paymentStatuses?: FieldPolicy<any> | FieldReadFunction<any>,
+	paymentSystem?: FieldPolicy<any> | FieldReadFunction<any>,
+	paymentSystems?: FieldPolicy<any> | FieldReadFunction<any>,
+	paymentSystemsList?: FieldPolicy<any> | FieldReadFunction<any>,
+	payments?: FieldPolicy<any> | FieldReadFunction<any>,
+	permission?: FieldPolicy<any> | FieldReadFunction<any>,
+	permissions?: FieldPolicy<any> | FieldReadFunction<any>,
+	permissions_tree?: FieldPolicy<any> | FieldReadFunction<any>,
+	priceListFees?: FieldPolicy<any> | FieldReadFunction<any>,
+	project?: FieldPolicy<any> | FieldReadFunction<any>,
+	projectApiSettingPassword?: FieldPolicy<any> | FieldReadFunction<any>,
+	projectApiSettings?: FieldPolicy<any> | FieldReadFunction<any>,
+	projects?: FieldPolicy<any> | FieldReadFunction<any>,
+	region?: FieldPolicy<any> | FieldReadFunction<any>,
+	regions?: FieldPolicy<any> | FieldReadFunction<any>,
+	requisite?: FieldPolicy<any> | FieldReadFunction<any>,
+	requisites?: FieldPolicy<any> | FieldReadFunction<any>,
+	respondentFees?: FieldPolicy<any> | FieldReadFunction<any>,
+	role?: FieldPolicy<any> | FieldReadFunction<any>,
+	roles?: FieldPolicy<any> | FieldReadFunction<any>,
+	sendApplicantRequisiteDetails?: FieldPolicy<any> | FieldReadFunction<any>,
+	sendRequisiteDetails?: FieldPolicy<any> | FieldReadFunction<any>,
+	senders?: FieldPolicy<any> | FieldReadFunction<any>,
+	stateReasons?: FieldPolicy<any> | FieldReadFunction<any>,
+	states?: FieldPolicy<any> | FieldReadFunction<any>,
+	ticket?: FieldPolicy<any> | FieldReadFunction<any>,
+	ticketComment?: FieldPolicy<any> | FieldReadFunction<any>,
+	tickets?: FieldPolicy<any> | FieldReadFunction<any>,
+	transferIncoming?: FieldPolicy<any> | FieldReadFunction<any>,
+	transferIncomingHistory?: FieldPolicy<any> | FieldReadFunction<any>,
+	transferIncomings?: FieldPolicy<any> | FieldReadFunction<any>,
+	transferIncomingsStatistic?: FieldPolicy<any> | FieldReadFunction<any>,
+	transferOutgoing?: FieldPolicy<any> | FieldReadFunction<any>,
+	transferOutgoingHistory?: FieldPolicy<any> | FieldReadFunction<any>,
+	transferOutgoings?: FieldPolicy<any> | FieldReadFunction<any>,
+	transferOutgoingsStatistic?: FieldPolicy<any> | FieldReadFunction<any>,
+	twoFactorAuth?: FieldPolicy<any> | FieldReadFunction<any>,
+	twoFactorsAuth?: FieldPolicy<any> | FieldReadFunction<any>,
+	typeOfIndustries?: FieldPolicy<any> | FieldReadFunction<any>,
+	userAuthData?: FieldPolicy<any> | FieldReadFunction<any>,
+	users?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type RawFileKeySpecifier = ('base64' | RawFileKeySpecifier)[];
+export type RawFileFieldPolicy = {
+	base64?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type RegionKeySpecifier = ('company' | 'countries' | 'id' | 'name' | RegionKeySpecifier)[];
+export type RegionFieldPolicy = {
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	countries?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type RegionPaginatorKeySpecifier = ('data' | 'paginatorInfo' | RegionPaginatorKeySpecifier)[];
+export type RegionPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type RequisiteKeySpecifier = ('account_number' | 'bank' | 'currency' | 'id' | 'owner' | RequisiteKeySpecifier)[];
+export type RequisiteFieldPolicy = {
+	account_number?: FieldPolicy<any> | FieldReadFunction<any>,
+	bank?: FieldPolicy<any> | FieldReadFunction<any>,
+	currency?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	owner?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type RespondentFeeKeySpecifier = ('id' | 'name' | RespondentFeeKeySpecifier)[];
+export type RespondentFeeFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type RoleKeySpecifier = ('company' | 'description' | 'group_type' | 'groups' | 'groups_count' | 'id' | 'is_all_companies' | 'name' | 'permission_category_all_member' | 'permissions' | 'permissions_tree' | RoleKeySpecifier)[];
+export type RoleFieldPolicy = {
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	description?: FieldPolicy<any> | FieldReadFunction<any>,
+	group_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	groups?: FieldPolicy<any> | FieldReadFunction<any>,
+	groups_count?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_all_companies?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	permission_category_all_member?: FieldPolicy<any> | FieldReadFunction<any>,
+	permissions?: FieldPolicy<any> | FieldReadFunction<any>,
+	permissions_tree?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type RolePaginatorKeySpecifier = ('data' | 'paginatorInfo' | RolePaginatorKeySpecifier)[];
+export type RolePaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type SenderKeySpecifier = ('sender_name' | SenderKeySpecifier)[];
+export type SenderFieldPolicy = {
+	sender_name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type SimplePaginatorInfoKeySpecifier = ('count' | 'currentPage' | 'firstItem' | 'hasMorePages' | 'lastItem' | 'perPage' | SimplePaginatorInfoKeySpecifier)[];
+export type SimplePaginatorInfoFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	currentPage?: FieldPolicy<any> | FieldReadFunction<any>,
+	firstItem?: FieldPolicy<any> | FieldReadFunction<any>,
+	hasMorePages?: FieldPolicy<any> | FieldReadFunction<any>,
+	lastItem?: FieldPolicy<any> | FieldReadFunction<any>,
+	perPage?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type StateKeySpecifier = ('id' | 'name' | StateKeySpecifier)[];
+export type StateFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type StateReasonKeySpecifier = ('id' | 'name' | StateReasonKeySpecifier)[];
+export type StateReasonFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type StatusTypeKeySpecifier = ('message' | 'status' | StatusTypeKeySpecifier)[];
+export type StatusTypeFieldPolicy = {
+	message?: FieldPolicy<any> | FieldReadFunction<any>,
+	status?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type TicketKeySpecifier = ('client' | 'comments' | 'company' | 'created_at' | 'department' | 'file_object' | 'id' | 'member' | 'message' | 'position' | 'status' | 'title' | 'updated_at' | TicketKeySpecifier)[];
+export type TicketFieldPolicy = {
+	client?: FieldPolicy<any> | FieldReadFunction<any>,
+	comments?: FieldPolicy<any> | FieldReadFunction<any>,
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	department?: FieldPolicy<any> | FieldReadFunction<any>,
+	file_object?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	member?: FieldPolicy<any> | FieldReadFunction<any>,
+	message?: FieldPolicy<any> | FieldReadFunction<any>,
+	position?: FieldPolicy<any> | FieldReadFunction<any>,
+	status?: FieldPolicy<any> | FieldReadFunction<any>,
+	title?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type TicketCommentsKeySpecifier = ('client' | 'created_at' | 'file_object' | 'id' | 'message' | 'ticket' | 'updated_at' | TicketCommentsKeySpecifier)[];
+export type TicketCommentsFieldPolicy = {
+	client?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	file_object?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	message?: FieldPolicy<any> | FieldReadFunction<any>,
+	ticket?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type TicketPaginatorKeySpecifier = ('data' | 'paginatorInfo' | TicketPaginatorKeySpecifier)[];
+export type TicketPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type TicketStatusKeySpecifier = ('id' | 'name' | TicketStatusKeySpecifier)[];
+export type TicketStatusFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type TransferIncomingKeySpecifier = ('account' | 'amount' | 'amount_debt' | 'bank_message' | 'channel' | 'company' | 'created_at' | 'currency' | 'execution_at' | 'fee' | 'fees' | 'files' | 'id' | 'payment_bank' | 'payment_number' | 'payment_operation_type' | 'payment_provider' | 'payment_provider_history' | 'payment_system' | 'payment_urgency' | 'reason' | 'recipient' | 'respondent_fee' | 'sender_account' | 'sender_address' | 'sender_bank_address' | 'sender_bank_country' | 'sender_bank_name' | 'sender_bank_swift' | 'sender_city' | 'sender_country' | 'sender_name' | 'sender_state' | 'sender_zip' | 'status' | 'system_message' | 'transfer_type' | 'updated_at' | TransferIncomingKeySpecifier)[];
+export type TransferIncomingFieldPolicy = {
+	account?: FieldPolicy<any> | FieldReadFunction<any>,
+	amount?: FieldPolicy<any> | FieldReadFunction<any>,
+	amount_debt?: FieldPolicy<any> | FieldReadFunction<any>,
+	bank_message?: FieldPolicy<any> | FieldReadFunction<any>,
+	channel?: FieldPolicy<any> | FieldReadFunction<any>,
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	currency?: FieldPolicy<any> | FieldReadFunction<any>,
+	execution_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	fee?: FieldPolicy<any> | FieldReadFunction<any>,
+	fees?: FieldPolicy<any> | FieldReadFunction<any>,
+	files?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_bank?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_number?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_operation_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_provider?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_provider_history?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_system?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_urgency?: FieldPolicy<any> | FieldReadFunction<any>,
+	reason?: FieldPolicy<any> | FieldReadFunction<any>,
+	recipient?: FieldPolicy<any> | FieldReadFunction<any>,
+	respondent_fee?: FieldPolicy<any> | FieldReadFunction<any>,
+	sender_account?: FieldPolicy<any> | FieldReadFunction<any>,
+	sender_address?: FieldPolicy<any> | FieldReadFunction<any>,
+	sender_bank_address?: FieldPolicy<any> | FieldReadFunction<any>,
+	sender_bank_country?: FieldPolicy<any> | FieldReadFunction<any>,
+	sender_bank_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	sender_bank_swift?: FieldPolicy<any> | FieldReadFunction<any>,
+	sender_city?: FieldPolicy<any> | FieldReadFunction<any>,
+	sender_country?: FieldPolicy<any> | FieldReadFunction<any>,
+	sender_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	sender_state?: FieldPolicy<any> | FieldReadFunction<any>,
+	sender_zip?: FieldPolicy<any> | FieldReadFunction<any>,
+	status?: FieldPolicy<any> | FieldReadFunction<any>,
+	system_message?: FieldPolicy<any> | FieldReadFunction<any>,
+	transfer_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type TransferIncomingHistoryKeySpecifier = ('action' | 'comment' | 'created_at' | 'id' | 'status' | TransferIncomingHistoryKeySpecifier)[];
+export type TransferIncomingHistoryFieldPolicy = {
+	action?: FieldPolicy<any> | FieldReadFunction<any>,
+	comment?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	status?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type TransferIncomingHistoryPaginatorKeySpecifier = ('data' | 'paginatorInfo' | TransferIncomingHistoryPaginatorKeySpecifier)[];
+export type TransferIncomingHistoryPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type TransferIncomingPaginatorKeySpecifier = ('data' | 'paginatorInfo' | TransferIncomingPaginatorKeySpecifier)[];
+export type TransferIncomingPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type TransferIncomingStatisticKeySpecifier = ('count' | 'name' | 'status_id' | TransferIncomingStatisticKeySpecifier)[];
+export type TransferIncomingStatisticFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	status_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type TransferOutgoingKeySpecifier = ('account' | 'amount' | 'amount_debt' | 'bank_message' | 'channel' | 'company' | 'created_at' | 'currency' | 'execution_at' | 'fee' | 'fees' | 'files' | 'id' | 'payment_bank' | 'payment_number' | 'payment_operation_type' | 'payment_provider' | 'payment_provider_history' | 'payment_system' | 'payment_urgency' | 'reason' | 'recipient_account' | 'recipient_address' | 'recipient_bank_address' | 'recipient_bank_country' | 'recipient_bank_name' | 'recipient_bank_swift' | 'recipient_city' | 'recipient_country' | 'recipient_name' | 'recipient_state' | 'recipient_zip' | 'requested_by' | 'respondent_fee' | 'sender' | 'status' | 'system_message' | 'transfer_type' | 'updated_at' | 'user_type' | TransferOutgoingKeySpecifier)[];
+export type TransferOutgoingFieldPolicy = {
+	account?: FieldPolicy<any> | FieldReadFunction<any>,
+	amount?: FieldPolicy<any> | FieldReadFunction<any>,
+	amount_debt?: FieldPolicy<any> | FieldReadFunction<any>,
+	bank_message?: FieldPolicy<any> | FieldReadFunction<any>,
+	channel?: FieldPolicy<any> | FieldReadFunction<any>,
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	currency?: FieldPolicy<any> | FieldReadFunction<any>,
+	execution_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	fee?: FieldPolicy<any> | FieldReadFunction<any>,
+	fees?: FieldPolicy<any> | FieldReadFunction<any>,
+	files?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_bank?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_number?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_operation_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_provider?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_provider_history?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_system?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_urgency?: FieldPolicy<any> | FieldReadFunction<any>,
+	reason?: FieldPolicy<any> | FieldReadFunction<any>,
+	recipient_account?: FieldPolicy<any> | FieldReadFunction<any>,
+	recipient_address?: FieldPolicy<any> | FieldReadFunction<any>,
+	recipient_bank_address?: FieldPolicy<any> | FieldReadFunction<any>,
+	recipient_bank_country?: FieldPolicy<any> | FieldReadFunction<any>,
+	recipient_bank_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	recipient_bank_swift?: FieldPolicy<any> | FieldReadFunction<any>,
+	recipient_city?: FieldPolicy<any> | FieldReadFunction<any>,
+	recipient_country?: FieldPolicy<any> | FieldReadFunction<any>,
+	recipient_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	recipient_state?: FieldPolicy<any> | FieldReadFunction<any>,
+	recipient_zip?: FieldPolicy<any> | FieldReadFunction<any>,
+	requested_by?: FieldPolicy<any> | FieldReadFunction<any>,
+	respondent_fee?: FieldPolicy<any> | FieldReadFunction<any>,
+	sender?: FieldPolicy<any> | FieldReadFunction<any>,
+	status?: FieldPolicy<any> | FieldReadFunction<any>,
+	system_message?: FieldPolicy<any> | FieldReadFunction<any>,
+	transfer_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_type?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type TransferOutgoingHistoryKeySpecifier = ('action' | 'comment' | 'created_at' | 'id' | 'status' | TransferOutgoingHistoryKeySpecifier)[];
+export type TransferOutgoingHistoryFieldPolicy = {
+	action?: FieldPolicy<any> | FieldReadFunction<any>,
+	comment?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	status?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type TransferOutgoingHistoryPaginatorKeySpecifier = ('data' | 'paginatorInfo' | TransferOutgoingHistoryPaginatorKeySpecifier)[];
+export type TransferOutgoingHistoryPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type TransferOutgoingPaginatorKeySpecifier = ('data' | 'paginatorInfo' | TransferOutgoingPaginatorKeySpecifier)[];
+export type TransferOutgoingPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type TransferOutgoingStatisticKeySpecifier = ('count' | 'name' | 'status_id' | TransferOutgoingStatisticKeySpecifier)[];
+export type TransferOutgoingStatisticFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	status_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type TwoFactorAuthSettingsKeySpecifier = ('id' | 'name' | TwoFactorAuthSettingsKeySpecifier)[];
+export type TwoFactorAuthSettingsFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type TwoFactorAuthSettingsPaginatorKeySpecifier = ('data' | 'paginatorInfo' | TwoFactorAuthSettingsPaginatorKeySpecifier)[];
+export type TwoFactorAuthSettingsPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type TwoFactorAuthTokenKeySpecifier = ('auth_token' | 'two_factor' | TwoFactorAuthTokenKeySpecifier)[];
+export type TwoFactorAuthTokenFieldPolicy = {
+	auth_token?: FieldPolicy<any> | FieldReadFunction<any>,
+	two_factor?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type TypeOfIndustryKeySpecifier = ('id' | 'name' | TypeOfIndustryKeySpecifier)[];
+export type TypeOfIndustryFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type TypeOfTransferKeySpecifier = ('id' | 'name' | TypeOfTransferKeySpecifier)[];
+export type TypeOfTransferFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type UsersKeySpecifier = ('company' | 'email' | 'first_name' | 'fullname' | 'group' | 'id' | 'last_name' | UsersKeySpecifier)[];
+export type UsersFieldPolicy = {
+	company?: FieldPolicy<any> | FieldReadFunction<any>,
+	email?: FieldPolicy<any> | FieldReadFunction<any>,
+	first_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	fullname?: FieldPolicy<any> | FieldReadFunction<any>,
+	group?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	last_name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type UsersPaginatorKeySpecifier = ('data' | 'paginatorInfo' | UsersPaginatorKeySpecifier)[];
+export type UsersPaginatorFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	paginatorInfo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type dashboardAccountsStatisticKeySpecifier = ('account_state_id' | 'account_state_name' | 'count' | 'payment_provider_id' | 'payment_provider_name' | dashboardAccountsStatisticKeySpecifier)[];
+export type dashboardAccountsStatisticFieldPolicy = {
+	account_state_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	account_state_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_provider_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	payment_provider_name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type dashboardTicketsStatisticKeySpecifier = ('count' | 'status_id' | 'status_name' | dashboardTicketsStatisticKeySpecifier)[];
+export type dashboardTicketsStatisticFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	status_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	status_name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type dashboardTransfersStatisticKeySpecifier = ('count' | 'status_name' | 'transfer_type' | dashboardTransfersStatisticKeySpecifier)[];
+export type dashboardTransfersStatisticFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	status_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	transfer_type?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type dashboardUsersStatisticKeySpecifier = ('applicant_type' | 'count' | 'status_name' | dashboardUsersStatisticKeySpecifier)[];
+export type dashboardUsersStatisticFieldPolicy = {
+	applicant_type?: FieldPolicy<any> | FieldReadFunction<any>,
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	status_name?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type userAuthResponseKeySpecifier = ('data' | 'permissions' | userAuthResponseKeySpecifier)[];
+export type userAuthResponseFieldPolicy = {
+	data?: FieldPolicy<any> | FieldReadFunction<any>,
+	permissions?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type StrictTypedTypePolicies = {
+	Account?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | AccountKeySpecifier | (() => undefined | AccountKeySpecifier),
+		fields?: AccountFieldPolicy,
+	},
+	AccountClient?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | AccountClientKeySpecifier | (() => undefined | AccountClientKeySpecifier),
+		fields?: AccountClientFieldPolicy,
+	},
+	AccountGenerateIbanResponse?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | AccountGenerateIbanResponseKeySpecifier | (() => undefined | AccountGenerateIbanResponseKeySpecifier),
+		fields?: AccountGenerateIbanResponseFieldPolicy,
+	},
+	AccountLimit?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | AccountLimitKeySpecifier | (() => undefined | AccountLimitKeySpecifier),
+		fields?: AccountLimitFieldPolicy,
+	},
+	AccountLimitPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | AccountLimitPaginatorKeySpecifier | (() => undefined | AccountLimitPaginatorKeySpecifier),
+		fields?: AccountLimitPaginatorFieldPolicy,
+	},
+	AccountPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | AccountPaginatorKeySpecifier | (() => undefined | AccountPaginatorKeySpecifier),
+		fields?: AccountPaginatorFieldPolicy,
+	},
+	AccountReachedLimit?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | AccountReachedLimitKeySpecifier | (() => undefined | AccountReachedLimitKeySpecifier),
+		fields?: AccountReachedLimitFieldPolicy,
+	},
+	AccountReachedLimitPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | AccountReachedLimitPaginatorKeySpecifier | (() => undefined | AccountReachedLimitPaginatorKeySpecifier),
+		fields?: AccountReachedLimitPaginatorFieldPolicy,
+	},
+	AccountState?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | AccountStateKeySpecifier | (() => undefined | AccountStateKeySpecifier),
+		fields?: AccountStateFieldPolicy,
+	},
+	AccountStatement?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | AccountStatementKeySpecifier | (() => undefined | AccountStatementKeySpecifier),
+		fields?: AccountStatementFieldPolicy,
+	},
+	AccountStatementTransaction?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | AccountStatementTransactionKeySpecifier | (() => undefined | AccountStatementTransactionKeySpecifier),
+		fields?: AccountStatementTransactionFieldPolicy,
+	},
+	ActiveSession?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ActiveSessionKeySpecifier | (() => undefined | ActiveSessionKeySpecifier),
+		fields?: ActiveSessionFieldPolicy,
+	},
+	ActiveSessionMutatorResponse?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ActiveSessionMutatorResponseKeySpecifier | (() => undefined | ActiveSessionMutatorResponseKeySpecifier),
+		fields?: ActiveSessionMutatorResponseFieldPolicy,
+	},
+	ActiveSessions?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ActiveSessionsKeySpecifier | (() => undefined | ActiveSessionsKeySpecifier),
+		fields?: ActiveSessionsFieldPolicy,
+	},
+	ActivityLog?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ActivityLogKeySpecifier | (() => undefined | ActivityLogKeySpecifier),
+		fields?: ActivityLogFieldPolicy,
+	},
+	ActivityLogs?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ActivityLogsKeySpecifier | (() => undefined | ActivityLogsKeySpecifier),
+		fields?: ActivityLogsFieldPolicy,
+	},
+	ApplicantAccount?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantAccountKeySpecifier | (() => undefined | ApplicantAccountKeySpecifier),
+		fields?: ApplicantAccountFieldPolicy,
+	},
+	ApplicantBankingAccess?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantBankingAccessKeySpecifier | (() => undefined | ApplicantBankingAccessKeySpecifier),
+		fields?: ApplicantBankingAccessFieldPolicy,
+	},
+	ApplicantBankingAccesses?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantBankingAccessesKeySpecifier | (() => undefined | ApplicantBankingAccessesKeySpecifier),
+		fields?: ApplicantBankingAccessesFieldPolicy,
+	},
+	ApplicantCompany?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantCompanyKeySpecifier | (() => undefined | ApplicantCompanyKeySpecifier),
+		fields?: ApplicantCompanyFieldPolicy,
+	},
+	ApplicantCompanyBusinessType?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantCompanyBusinessTypeKeySpecifier | (() => undefined | ApplicantCompanyBusinessTypeKeySpecifier),
+		fields?: ApplicantCompanyBusinessTypeFieldPolicy,
+	},
+	ApplicantCompanyBusinessTypePaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantCompanyBusinessTypePaginatorKeySpecifier | (() => undefined | ApplicantCompanyBusinessTypePaginatorKeySpecifier),
+		fields?: ApplicantCompanyBusinessTypePaginatorFieldPolicy,
+	},
+	ApplicantCompanyLabel?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantCompanyLabelKeySpecifier | (() => undefined | ApplicantCompanyLabelKeySpecifier),
+		fields?: ApplicantCompanyLabelFieldPolicy,
+	},
+	ApplicantCompanyLabelPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantCompanyLabelPaginatorKeySpecifier | (() => undefined | ApplicantCompanyLabelPaginatorKeySpecifier),
+		fields?: ApplicantCompanyLabelPaginatorFieldPolicy,
+	},
+	ApplicantCompanyModules?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantCompanyModulesKeySpecifier | (() => undefined | ApplicantCompanyModulesKeySpecifier),
+		fields?: ApplicantCompanyModulesFieldPolicy,
+	},
+	ApplicantCompanyNotes?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantCompanyNotesKeySpecifier | (() => undefined | ApplicantCompanyNotesKeySpecifier),
+		fields?: ApplicantCompanyNotesFieldPolicy,
+	},
+	ApplicantCompanyNotesPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantCompanyNotesPaginatorKeySpecifier | (() => undefined | ApplicantCompanyNotesPaginatorKeySpecifier),
+		fields?: ApplicantCompanyNotesPaginatorFieldPolicy,
+	},
+	ApplicantCompanyPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantCompanyPaginatorKeySpecifier | (() => undefined | ApplicantCompanyPaginatorKeySpecifier),
+		fields?: ApplicantCompanyPaginatorFieldPolicy,
+	},
+	ApplicantCompanyRiskLevelHistory?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantCompanyRiskLevelHistoryKeySpecifier | (() => undefined | ApplicantCompanyRiskLevelHistoryKeySpecifier),
+		fields?: ApplicantCompanyRiskLevelHistoryFieldPolicy,
+	},
+	ApplicantCompanyRiskLevelHistoryPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantCompanyRiskLevelHistoryPaginatorKeySpecifier | (() => undefined | ApplicantCompanyRiskLevelHistoryPaginatorKeySpecifier),
+		fields?: ApplicantCompanyRiskLevelHistoryPaginatorFieldPolicy,
+	},
+	ApplicantDetailsRequisites?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantDetailsRequisitesKeySpecifier | (() => undefined | ApplicantDetailsRequisitesKeySpecifier),
+		fields?: ApplicantDetailsRequisitesFieldPolicy,
+	},
+	ApplicantDevice?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantDeviceKeySpecifier | (() => undefined | ApplicantDeviceKeySpecifier),
+		fields?: ApplicantDeviceFieldPolicy,
+	},
+	ApplicantDocument?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantDocumentKeySpecifier | (() => undefined | ApplicantDocumentKeySpecifier),
+		fields?: ApplicantDocumentFieldPolicy,
+	},
+	ApplicantDocumentInternalNote?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantDocumentInternalNoteKeySpecifier | (() => undefined | ApplicantDocumentInternalNoteKeySpecifier),
+		fields?: ApplicantDocumentInternalNoteFieldPolicy,
+	},
+	ApplicantDocumentInternalNotePaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantDocumentInternalNotePaginatorKeySpecifier | (() => undefined | ApplicantDocumentInternalNotePaginatorKeySpecifier),
+		fields?: ApplicantDocumentInternalNotePaginatorFieldPolicy,
+	},
+	ApplicantDocumentPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantDocumentPaginatorKeySpecifier | (() => undefined | ApplicantDocumentPaginatorKeySpecifier),
+		fields?: ApplicantDocumentPaginatorFieldPolicy,
+	},
+	ApplicantDocumentRejectDetail?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantDocumentRejectDetailKeySpecifier | (() => undefined | ApplicantDocumentRejectDetailKeySpecifier),
+		fields?: ApplicantDocumentRejectDetailFieldPolicy,
+	},
+	ApplicantDocumentTag?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantDocumentTagKeySpecifier | (() => undefined | ApplicantDocumentTagKeySpecifier),
+		fields?: ApplicantDocumentTagFieldPolicy,
+	},
+	ApplicantDocumentTagCategory?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantDocumentTagCategoryKeySpecifier | (() => undefined | ApplicantDocumentTagCategoryKeySpecifier),
+		fields?: ApplicantDocumentTagCategoryFieldPolicy,
+	},
+	ApplicantDocumentTagCategoryPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantDocumentTagCategoryPaginatorKeySpecifier | (() => undefined | ApplicantDocumentTagCategoryPaginatorKeySpecifier),
+		fields?: ApplicantDocumentTagCategoryPaginatorFieldPolicy,
+	},
+	ApplicantDocumentTagPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantDocumentTagPaginatorKeySpecifier | (() => undefined | ApplicantDocumentTagPaginatorKeySpecifier),
+		fields?: ApplicantDocumentTagPaginatorFieldPolicy,
+	},
+	ApplicantIndividual?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantIndividualKeySpecifier | (() => undefined | ApplicantIndividualKeySpecifier),
+		fields?: ApplicantIndividualFieldPolicy,
+	},
+	ApplicantIndividualCompany?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantIndividualCompanyKeySpecifier | (() => undefined | ApplicantIndividualCompanyKeySpecifier),
+		fields?: ApplicantIndividualCompanyFieldPolicy,
+	},
+	ApplicantIndividualCompanyPosition?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantIndividualCompanyPositionKeySpecifier | (() => undefined | ApplicantIndividualCompanyPositionKeySpecifier),
+		fields?: ApplicantIndividualCompanyPositionFieldPolicy,
+	},
+	ApplicantIndividualCompanyPositionPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantIndividualCompanyPositionPaginatorKeySpecifier | (() => undefined | ApplicantIndividualCompanyPositionPaginatorKeySpecifier),
+		fields?: ApplicantIndividualCompanyPositionPaginatorFieldPolicy,
+	},
+	ApplicantIndividualCompanyRelation?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantIndividualCompanyRelationKeySpecifier | (() => undefined | ApplicantIndividualCompanyRelationKeySpecifier),
+		fields?: ApplicantIndividualCompanyRelationFieldPolicy,
+	},
+	ApplicantIndividualCompanyRelationPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantIndividualCompanyRelationPaginatorKeySpecifier | (() => undefined | ApplicantIndividualCompanyRelationPaginatorKeySpecifier),
+		fields?: ApplicantIndividualCompanyRelationPaginatorFieldPolicy,
+	},
+	ApplicantIndividualLabel?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantIndividualLabelKeySpecifier | (() => undefined | ApplicantIndividualLabelKeySpecifier),
+		fields?: ApplicantIndividualLabelFieldPolicy,
+	},
+	ApplicantIndividualLabelPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantIndividualLabelPaginatorKeySpecifier | (() => undefined | ApplicantIndividualLabelPaginatorKeySpecifier),
+		fields?: ApplicantIndividualLabelPaginatorFieldPolicy,
+	},
+	ApplicantIndividualModules?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantIndividualModulesKeySpecifier | (() => undefined | ApplicantIndividualModulesKeySpecifier),
+		fields?: ApplicantIndividualModulesFieldPolicy,
+	},
+	ApplicantIndividualNotes?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantIndividualNotesKeySpecifier | (() => undefined | ApplicantIndividualNotesKeySpecifier),
+		fields?: ApplicantIndividualNotesFieldPolicy,
+	},
+	ApplicantIndividualNotesPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantIndividualNotesPaginatorKeySpecifier | (() => undefined | ApplicantIndividualNotesPaginatorKeySpecifier),
+		fields?: ApplicantIndividualNotesPaginatorFieldPolicy,
+	},
+	ApplicantIndividualPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantIndividualPaginatorKeySpecifier | (() => undefined | ApplicantIndividualPaginatorKeySpecifier),
+		fields?: ApplicantIndividualPaginatorFieldPolicy,
+	},
+	ApplicantKycLevel?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantKycLevelKeySpecifier | (() => undefined | ApplicantKycLevelKeySpecifier),
+		fields?: ApplicantKycLevelFieldPolicy,
+	},
+	ApplicantKycLevelPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantKycLevelPaginatorKeySpecifier | (() => undefined | ApplicantKycLevelPaginatorKeySpecifier),
+		fields?: ApplicantKycLevelPaginatorFieldPolicy,
+	},
+	ApplicantLinkedCompany?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantLinkedCompanyKeySpecifier | (() => undefined | ApplicantLinkedCompanyKeySpecifier),
+		fields?: ApplicantLinkedCompanyFieldPolicy,
+	},
+	ApplicantModules?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantModulesKeySpecifier | (() => undefined | ApplicantModulesKeySpecifier),
+		fields?: ApplicantModulesFieldPolicy,
+	},
+	ApplicantModulesPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantModulesPaginatorKeySpecifier | (() => undefined | ApplicantModulesPaginatorKeySpecifier),
+		fields?: ApplicantModulesPaginatorFieldPolicy,
+	},
+	ApplicantProfile?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantProfileKeySpecifier | (() => undefined | ApplicantProfileKeySpecifier),
+		fields?: ApplicantProfileFieldPolicy,
+	},
+	ApplicantRequisites?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantRequisitesKeySpecifier | (() => undefined | ApplicantRequisitesKeySpecifier),
+		fields?: ApplicantRequisitesFieldPolicy,
+	},
+	ApplicantRiskLevel?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantRiskLevelKeySpecifier | (() => undefined | ApplicantRiskLevelKeySpecifier),
+		fields?: ApplicantRiskLevelFieldPolicy,
+	},
+	ApplicantRiskLevelHistory?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantRiskLevelHistoryKeySpecifier | (() => undefined | ApplicantRiskLevelHistoryKeySpecifier),
+		fields?: ApplicantRiskLevelHistoryFieldPolicy,
+	},
+	ApplicantRiskLevelHistoryPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantRiskLevelHistoryPaginatorKeySpecifier | (() => undefined | ApplicantRiskLevelHistoryPaginatorKeySpecifier),
+		fields?: ApplicantRiskLevelHistoryPaginatorFieldPolicy,
+	},
+	ApplicantRiskLevelPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantRiskLevelPaginatorKeySpecifier | (() => undefined | ApplicantRiskLevelPaginatorKeySpecifier),
+		fields?: ApplicantRiskLevelPaginatorFieldPolicy,
+	},
+	ApplicantSettingsProfile?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantSettingsProfileKeySpecifier | (() => undefined | ApplicantSettingsProfileKeySpecifier),
+		fields?: ApplicantSettingsProfileFieldPolicy,
+	},
+	ApplicantState?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantStateKeySpecifier | (() => undefined | ApplicantStateKeySpecifier),
+		fields?: ApplicantStateFieldPolicy,
+	},
+	ApplicantStatePaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantStatePaginatorKeySpecifier | (() => undefined | ApplicantStatePaginatorKeySpecifier),
+		fields?: ApplicantStatePaginatorFieldPolicy,
+	},
+	ApplicantStateReason?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantStateReasonKeySpecifier | (() => undefined | ApplicantStateReasonKeySpecifier),
+		fields?: ApplicantStateReasonFieldPolicy,
+	},
+	ApplicantStateReasonPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantStateReasonPaginatorKeySpecifier | (() => undefined | ApplicantStateReasonPaginatorKeySpecifier),
+		fields?: ApplicantStateReasonPaginatorFieldPolicy,
+	},
+	ApplicantStatus?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantStatusKeySpecifier | (() => undefined | ApplicantStatusKeySpecifier),
+		fields?: ApplicantStatusFieldPolicy,
+	},
+	ApplicantStatusPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantStatusPaginatorKeySpecifier | (() => undefined | ApplicantStatusPaginatorKeySpecifier),
+		fields?: ApplicantStatusPaginatorFieldPolicy,
+	},
+	ApplicantVerificationStatus?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ApplicantVerificationStatusKeySpecifier | (() => undefined | ApplicantVerificationStatusKeySpecifier),
+		fields?: ApplicantVerificationStatusFieldPolicy,
+	},
+	AuthenticationLog?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | AuthenticationLogKeySpecifier | (() => undefined | AuthenticationLogKeySpecifier),
+		fields?: AuthenticationLogFieldPolicy,
+	},
+	AuthenticationLogs?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | AuthenticationLogsKeySpecifier | (() => undefined | AuthenticationLogsKeySpecifier),
+		fields?: AuthenticationLogsFieldPolicy,
+	},
+	BankCorrespondent?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | BankCorrespondentKeySpecifier | (() => undefined | BankCorrespondentKeySpecifier),
+		fields?: BankCorrespondentFieldPolicy,
+	},
+	BankCorrespondentPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | BankCorrespondentPaginatorKeySpecifier | (() => undefined | BankCorrespondentPaginatorKeySpecifier),
+		fields?: BankCorrespondentPaginatorFieldPolicy,
+	},
+	BusinessActivity?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | BusinessActivityKeySpecifier | (() => undefined | BusinessActivityKeySpecifier),
+		fields?: BusinessActivityFieldPolicy,
+	},
+	BusinessActivityPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | BusinessActivityPaginatorKeySpecifier | (() => undefined | BusinessActivityPaginatorKeySpecifier),
+		fields?: BusinessActivityPaginatorFieldPolicy,
+	},
+	ClientAccountsDetails?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ClientAccountsDetailsKeySpecifier | (() => undefined | ClientAccountsDetailsKeySpecifier),
+		fields?: ClientAccountsDetailsFieldPolicy,
+	},
+	ClientIpAddress?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ClientIpAddressKeySpecifier | (() => undefined | ClientIpAddressKeySpecifier),
+		fields?: ClientIpAddressFieldPolicy,
+	},
+	CommissionPriceList?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | CommissionPriceListKeySpecifier | (() => undefined | CommissionPriceListKeySpecifier),
+		fields?: CommissionPriceListFieldPolicy,
+	},
+	CommissionPriceListPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | CommissionPriceListPaginatorKeySpecifier | (() => undefined | CommissionPriceListPaginatorKeySpecifier),
+		fields?: CommissionPriceListPaginatorFieldPolicy,
+	},
+	CommissionTemplate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | CommissionTemplateKeySpecifier | (() => undefined | CommissionTemplateKeySpecifier),
+		fields?: CommissionTemplateFieldPolicy,
+	},
+	CommissionTemplateLimit?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | CommissionTemplateLimitKeySpecifier | (() => undefined | CommissionTemplateLimitKeySpecifier),
+		fields?: CommissionTemplateLimitFieldPolicy,
+	},
+	CommissionTemplateLimitActionType?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | CommissionTemplateLimitActionTypeKeySpecifier | (() => undefined | CommissionTemplateLimitActionTypeKeySpecifier),
+		fields?: CommissionTemplateLimitActionTypeFieldPolicy,
+	},
+	CommissionTemplateLimitActionTypePaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | CommissionTemplateLimitActionTypePaginatorKeySpecifier | (() => undefined | CommissionTemplateLimitActionTypePaginatorKeySpecifier),
+		fields?: CommissionTemplateLimitActionTypePaginatorFieldPolicy,
+	},
+	CommissionTemplateLimitPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | CommissionTemplateLimitPaginatorKeySpecifier | (() => undefined | CommissionTemplateLimitPaginatorKeySpecifier),
+		fields?: CommissionTemplateLimitPaginatorFieldPolicy,
+	},
+	CommissionTemplateLimitPeriod?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | CommissionTemplateLimitPeriodKeySpecifier | (() => undefined | CommissionTemplateLimitPeriodKeySpecifier),
+		fields?: CommissionTemplateLimitPeriodFieldPolicy,
+	},
+	CommissionTemplateLimitPeriodPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | CommissionTemplateLimitPeriodPaginatorKeySpecifier | (() => undefined | CommissionTemplateLimitPeriodPaginatorKeySpecifier),
+		fields?: CommissionTemplateLimitPeriodPaginatorFieldPolicy,
+	},
+	CommissionTemplateLimitTransferDirection?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | CommissionTemplateLimitTransferDirectionKeySpecifier | (() => undefined | CommissionTemplateLimitTransferDirectionKeySpecifier),
+		fields?: CommissionTemplateLimitTransferDirectionFieldPolicy,
+	},
+	CommissionTemplateLimitTransferDirectionPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | CommissionTemplateLimitTransferDirectionPaginatorKeySpecifier | (() => undefined | CommissionTemplateLimitTransferDirectionPaginatorKeySpecifier),
+		fields?: CommissionTemplateLimitTransferDirectionPaginatorFieldPolicy,
+	},
+	CommissionTemplateLimitType?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | CommissionTemplateLimitTypeKeySpecifier | (() => undefined | CommissionTemplateLimitTypeKeySpecifier),
+		fields?: CommissionTemplateLimitTypeFieldPolicy,
+	},
+	CommissionTemplateLimitTypePaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | CommissionTemplateLimitTypePaginatorKeySpecifier | (() => undefined | CommissionTemplateLimitTypePaginatorKeySpecifier),
+		fields?: CommissionTemplateLimitTypePaginatorFieldPolicy,
+	},
+	CommissionTemplatePaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | CommissionTemplatePaginatorKeySpecifier | (() => undefined | CommissionTemplatePaginatorKeySpecifier),
+		fields?: CommissionTemplatePaginatorFieldPolicy,
+	},
+	Company?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | CompanyKeySpecifier | (() => undefined | CompanyKeySpecifier),
+		fields?: CompanyFieldPolicy,
+	},
+	CompanyModule?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | CompanyModuleKeySpecifier | (() => undefined | CompanyModuleKeySpecifier),
+		fields?: CompanyModuleFieldPolicy,
+	},
+	CompanyModuleIbanProvider?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | CompanyModuleIbanProviderKeySpecifier | (() => undefined | CompanyModuleIbanProviderKeySpecifier),
+		fields?: CompanyModuleIbanProviderFieldPolicy,
+	},
+	CompanyModuleIbanProviderPassword?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | CompanyModuleIbanProviderPasswordKeySpecifier | (() => undefined | CompanyModuleIbanProviderPasswordKeySpecifier),
+		fields?: CompanyModuleIbanProviderPasswordFieldPolicy,
+	},
+	CompanyModulePaymentProvider?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | CompanyModulePaymentProviderKeySpecifier | (() => undefined | CompanyModulePaymentProviderKeySpecifier),
+		fields?: CompanyModulePaymentProviderFieldPolicy,
+	},
+	CompanyModulePaymentProviderPassword?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | CompanyModulePaymentProviderPasswordKeySpecifier | (() => undefined | CompanyModulePaymentProviderPasswordKeySpecifier),
+		fields?: CompanyModulePaymentProviderPasswordFieldPolicy,
+	},
+	CompanyPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | CompanyPaginatorKeySpecifier | (() => undefined | CompanyPaginatorKeySpecifier),
+		fields?: CompanyPaginatorFieldPolicy,
+	},
+	Country?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | CountryKeySpecifier | (() => undefined | CountryKeySpecifier),
+		fields?: CountryFieldPolicy,
+	},
+	CountryPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | CountryPaginatorKeySpecifier | (() => undefined | CountryPaginatorKeySpecifier),
+		fields?: CountryPaginatorFieldPolicy,
+	},
+	Currencies?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | CurrenciesKeySpecifier | (() => undefined | CurrenciesKeySpecifier),
+		fields?: CurrenciesFieldPolicy,
+	},
+	CurrenciesPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | CurrenciesPaginatorKeySpecifier | (() => undefined | CurrenciesPaginatorKeySpecifier),
+		fields?: CurrenciesPaginatorFieldPolicy,
+	},
+	Department?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | DepartmentKeySpecifier | (() => undefined | DepartmentKeySpecifier),
+		fields?: DepartmentFieldPolicy,
+	},
+	DepartmentPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | DepartmentPaginatorKeySpecifier | (() => undefined | DepartmentPaginatorKeySpecifier),
+		fields?: DepartmentPaginatorFieldPolicy,
+	},
+	DepartmentPosition?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | DepartmentPositionKeySpecifier | (() => undefined | DepartmentPositionKeySpecifier),
+		fields?: DepartmentPositionFieldPolicy,
+	},
+	DepartmentPositionPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | DepartmentPositionPaginatorKeySpecifier | (() => undefined | DepartmentPositionPaginatorKeySpecifier),
+		fields?: DepartmentPositionPaginatorFieldPolicy,
+	},
+	DocumentState?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | DocumentStateKeySpecifier | (() => undefined | DocumentStateKeySpecifier),
+		fields?: DocumentStateFieldPolicy,
+	},
+	DocumentType?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | DocumentTypeKeySpecifier | (() => undefined | DocumentTypeKeySpecifier),
+		fields?: DocumentTypeFieldPolicy,
+	},
+	EmailNotification?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | EmailNotificationKeySpecifier | (() => undefined | EmailNotificationKeySpecifier),
+		fields?: EmailNotificationFieldPolicy,
+	},
+	EmailNotificationPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | EmailNotificationPaginatorKeySpecifier | (() => undefined | EmailNotificationPaginatorKeySpecifier),
+		fields?: EmailNotificationPaginatorFieldPolicy,
+	},
+	EmailSmtp?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | EmailSmtpKeySpecifier | (() => undefined | EmailSmtpKeySpecifier),
+		fields?: EmailSmtpFieldPolicy,
+	},
+	EmailTemplate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | EmailTemplateKeySpecifier | (() => undefined | EmailTemplateKeySpecifier),
+		fields?: EmailTemplateFieldPolicy,
+	},
+	EmailTemplateLayout?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | EmailTemplateLayoutKeySpecifier | (() => undefined | EmailTemplateLayoutKeySpecifier),
+		fields?: EmailTemplateLayoutFieldPolicy,
+	},
+	EmailTemplateOnCompanyResponse?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | EmailTemplateOnCompanyResponseKeySpecifier | (() => undefined | EmailTemplateOnCompanyResponseKeySpecifier),
+		fields?: EmailTemplateOnCompanyResponseFieldPolicy,
+	},
+	Employee?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | EmployeeKeySpecifier | (() => undefined | EmployeeKeySpecifier),
+		fields?: EmployeeFieldPolicy,
+	},
+	Fee?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | FeeKeySpecifier | (() => undefined | FeeKeySpecifier),
+		fields?: FeeFieldPolicy,
+	},
+	FeeItem?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | FeeItemKeySpecifier | (() => undefined | FeeItemKeySpecifier),
+		fields?: FeeItemFieldPolicy,
+	},
+	FeeMode?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | FeeModeKeySpecifier | (() => undefined | FeeModeKeySpecifier),
+		fields?: FeeModeFieldPolicy,
+	},
+	FeePeriod?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | FeePeriodKeySpecifier | (() => undefined | FeePeriodKeySpecifier),
+		fields?: FeePeriodFieldPolicy,
+	},
+	FeeType?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | FeeTypeKeySpecifier | (() => undefined | FeeTypeKeySpecifier),
+		fields?: FeeTypeFieldPolicy,
+	},
+	Files?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | FilesKeySpecifier | (() => undefined | FilesKeySpecifier),
+		fields?: FilesFieldPolicy,
+	},
+	FilesPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | FilesPaginatorKeySpecifier | (() => undefined | FilesPaginatorKeySpecifier),
+		fields?: FilesPaginatorFieldPolicy,
+	},
+	GroupRole?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | GroupRoleKeySpecifier | (() => undefined | GroupRoleKeySpecifier),
+		fields?: GroupRoleFieldPolicy,
+	},
+	GroupRolePaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | GroupRolePaginatorKeySpecifier | (() => undefined | GroupRolePaginatorKeySpecifier),
+		fields?: GroupRolePaginatorFieldPolicy,
+	},
+	GroupRoleProvider?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | GroupRoleProviderKeySpecifier | (() => undefined | GroupRoleProviderKeySpecifier),
+		fields?: GroupRoleProviderFieldPolicy,
+	},
+	GroupRoleView?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | GroupRoleViewKeySpecifier | (() => undefined | GroupRoleViewKeySpecifier),
+		fields?: GroupRoleViewFieldPolicy,
+	},
+	GroupRoleViewPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | GroupRoleViewPaginatorKeySpecifier | (() => undefined | GroupRoleViewPaginatorKeySpecifier),
+		fields?: GroupRoleViewPaginatorFieldPolicy,
+	},
+	GroupType?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | GroupTypeKeySpecifier | (() => undefined | GroupTypeKeySpecifier),
+		fields?: GroupTypeFieldPolicy,
+	},
+	GroupTypePaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | GroupTypePaginatorKeySpecifier | (() => undefined | GroupTypePaginatorKeySpecifier),
+		fields?: GroupTypePaginatorFieldPolicy,
+	},
+	Groups?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | GroupsKeySpecifier | (() => undefined | GroupsKeySpecifier),
+		fields?: GroupsFieldPolicy,
+	},
+	KycTimeline?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | KycTimelineKeySpecifier | (() => undefined | KycTimelineKeySpecifier),
+		fields?: KycTimelineFieldPolicy,
+	},
+	KycTimelines?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | KycTimelinesKeySpecifier | (() => undefined | KycTimelinesKeySpecifier),
+		fields?: KycTimelinesFieldPolicy,
+	},
+	Languages?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | LanguagesKeySpecifier | (() => undefined | LanguagesKeySpecifier),
+		fields?: LanguagesFieldPolicy,
+	},
+	LanguagesPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | LanguagesPaginatorKeySpecifier | (() => undefined | LanguagesPaginatorKeySpecifier),
+		fields?: LanguagesPaginatorFieldPolicy,
+	},
+	MemberAccessLimitation?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | MemberAccessLimitationKeySpecifier | (() => undefined | MemberAccessLimitationKeySpecifier),
+		fields?: MemberAccessLimitationFieldPolicy,
+	},
+	MemberAccessLimitationPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | MemberAccessLimitationPaginatorKeySpecifier | (() => undefined | MemberAccessLimitationPaginatorKeySpecifier),
+		fields?: MemberAccessLimitationPaginatorFieldPolicy,
+	},
+	MemberProfile?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | MemberProfileKeySpecifier | (() => undefined | MemberProfileKeySpecifier),
+		fields?: MemberProfileFieldPolicy,
+	},
+	MemberStatus?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | MemberStatusKeySpecifier | (() => undefined | MemberStatusKeySpecifier),
+		fields?: MemberStatusFieldPolicy,
+	},
+	Members?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | MembersKeySpecifier | (() => undefined | MembersKeySpecifier),
+		fields?: MembersFieldPolicy,
+	},
+	MembersPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | MembersPaginatorKeySpecifier | (() => undefined | MembersPaginatorKeySpecifier),
+		fields?: MembersPaginatorFieldPolicy,
+	},
+	Module?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ModuleKeySpecifier | (() => undefined | ModuleKeySpecifier),
+		fields?: ModuleFieldPolicy,
+	},
+	Mutation?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | MutationKeySpecifier | (() => undefined | MutationKeySpecifier),
+		fields?: MutationFieldPolicy,
+	},
+	OperationType?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | OperationTypeKeySpecifier | (() => undefined | OperationTypeKeySpecifier),
+		fields?: OperationTypeFieldPolicy,
+	},
+	PageInfo?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | PageInfoKeySpecifier | (() => undefined | PageInfoKeySpecifier),
+		fields?: PageInfoFieldPolicy,
+	},
+	PaginatorInfo?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | PaginatorInfoKeySpecifier | (() => undefined | PaginatorInfoKeySpecifier),
+		fields?: PaginatorInfoFieldPolicy,
+	},
+	PaymentBank?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | PaymentBankKeySpecifier | (() => undefined | PaymentBankKeySpecifier),
+		fields?: PaymentBankFieldPolicy,
+	},
+	PaymentBankPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | PaymentBankPaginatorKeySpecifier | (() => undefined | PaymentBankPaginatorKeySpecifier),
+		fields?: PaymentBankPaginatorFieldPolicy,
+	},
+	PaymentProvider?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | PaymentProviderKeySpecifier | (() => undefined | PaymentProviderKeySpecifier),
+		fields?: PaymentProviderFieldPolicy,
+	},
+	PaymentProviderHistory?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | PaymentProviderHistoryKeySpecifier | (() => undefined | PaymentProviderHistoryKeySpecifier),
+		fields?: PaymentProviderHistoryFieldPolicy,
+	},
+	PaymentProviderIban?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | PaymentProviderIbanKeySpecifier | (() => undefined | PaymentProviderIbanKeySpecifier),
+		fields?: PaymentProviderIbanFieldPolicy,
+	},
+	PaymentProviderIbanPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | PaymentProviderIbanPaginatorKeySpecifier | (() => undefined | PaymentProviderIbanPaginatorKeySpecifier),
+		fields?: PaymentProviderIbanPaginatorFieldPolicy,
+	},
+	PaymentProviderPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | PaymentProviderPaginatorKeySpecifier | (() => undefined | PaymentProviderPaginatorKeySpecifier),
+		fields?: PaymentProviderPaginatorFieldPolicy,
+	},
+	PaymentStatus?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | PaymentStatusKeySpecifier | (() => undefined | PaymentStatusKeySpecifier),
+		fields?: PaymentStatusFieldPolicy,
+	},
+	PaymentSystem?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | PaymentSystemKeySpecifier | (() => undefined | PaymentSystemKeySpecifier),
+		fields?: PaymentSystemFieldPolicy,
+	},
+	PaymentSystemPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | PaymentSystemPaginatorKeySpecifier | (() => undefined | PaymentSystemPaginatorKeySpecifier),
+		fields?: PaymentSystemPaginatorFieldPolicy,
+	},
+	PaymentUrgency?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | PaymentUrgencyKeySpecifier | (() => undefined | PaymentUrgencyKeySpecifier),
+		fields?: PaymentUrgencyFieldPolicy,
+	},
+	Payments?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | PaymentsKeySpecifier | (() => undefined | PaymentsKeySpecifier),
+		fields?: PaymentsFieldPolicy,
+	},
+	PaymentsPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | PaymentsPaginatorKeySpecifier | (() => undefined | PaymentsPaginatorKeySpecifier),
+		fields?: PaymentsPaginatorFieldPolicy,
+	},
+	PermissionAuth?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | PermissionAuthKeySpecifier | (() => undefined | PermissionAuthKeySpecifier),
+		fields?: PermissionAuthFieldPolicy,
+	},
+	PermissionCategory?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | PermissionCategoryKeySpecifier | (() => undefined | PermissionCategoryKeySpecifier),
+		fields?: PermissionCategoryFieldPolicy,
+	},
+	PermissionCategoryRole?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | PermissionCategoryRoleKeySpecifier | (() => undefined | PermissionCategoryRoleKeySpecifier),
+		fields?: PermissionCategoryRoleFieldPolicy,
+	},
+	PermissionList?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | PermissionListKeySpecifier | (() => undefined | PermissionListKeySpecifier),
+		fields?: PermissionListFieldPolicy,
+	},
+	PermissionType?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | PermissionTypeKeySpecifier | (() => undefined | PermissionTypeKeySpecifier),
+		fields?: PermissionTypeFieldPolicy,
+	},
+	Permissions?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | PermissionsKeySpecifier | (() => undefined | PermissionsKeySpecifier),
+		fields?: PermissionsFieldPolicy,
+	},
+	PriceListFee?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | PriceListFeeKeySpecifier | (() => undefined | PriceListFeeKeySpecifier),
+		fields?: PriceListFeeFieldPolicy,
+	},
+	PriceListFeeCurrency?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | PriceListFeeCurrencyKeySpecifier | (() => undefined | PriceListFeeCurrencyKeySpecifier),
+		fields?: PriceListFeeCurrencyFieldPolicy,
+	},
+	PriceListFeeScheduled?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | PriceListFeeScheduledKeySpecifier | (() => undefined | PriceListFeeScheduledKeySpecifier),
+		fields?: PriceListFeeScheduledFieldPolicy,
+	},
+	Project?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ProjectKeySpecifier | (() => undefined | ProjectKeySpecifier),
+		fields?: ProjectFieldPolicy,
+	},
+	ProjectApiSetting?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ProjectApiSettingKeySpecifier | (() => undefined | ProjectApiSettingKeySpecifier),
+		fields?: ProjectApiSettingFieldPolicy,
+	},
+	ProjectApiSettingPassword?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ProjectApiSettingPasswordKeySpecifier | (() => undefined | ProjectApiSettingPasswordKeySpecifier),
+		fields?: ProjectApiSettingPasswordFieldPolicy,
+	},
+	ProjectPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ProjectPaginatorKeySpecifier | (() => undefined | ProjectPaginatorKeySpecifier),
+		fields?: ProjectPaginatorFieldPolicy,
+	},
+	ProjectSettings?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ProjectSettingsKeySpecifier | (() => undefined | ProjectSettingsKeySpecifier),
+		fields?: ProjectSettingsFieldPolicy,
+	},
+	Query?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | QueryKeySpecifier | (() => undefined | QueryKeySpecifier),
+		fields?: QueryFieldPolicy,
+	},
+	RawFile?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | RawFileKeySpecifier | (() => undefined | RawFileKeySpecifier),
+		fields?: RawFileFieldPolicy,
+	},
+	Region?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | RegionKeySpecifier | (() => undefined | RegionKeySpecifier),
+		fields?: RegionFieldPolicy,
+	},
+	RegionPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | RegionPaginatorKeySpecifier | (() => undefined | RegionPaginatorKeySpecifier),
+		fields?: RegionPaginatorFieldPolicy,
+	},
+	Requisite?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | RequisiteKeySpecifier | (() => undefined | RequisiteKeySpecifier),
+		fields?: RequisiteFieldPolicy,
+	},
+	RespondentFee?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | RespondentFeeKeySpecifier | (() => undefined | RespondentFeeKeySpecifier),
+		fields?: RespondentFeeFieldPolicy,
+	},
+	Role?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | RoleKeySpecifier | (() => undefined | RoleKeySpecifier),
+		fields?: RoleFieldPolicy,
+	},
+	RolePaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | RolePaginatorKeySpecifier | (() => undefined | RolePaginatorKeySpecifier),
+		fields?: RolePaginatorFieldPolicy,
+	},
+	Sender?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | SenderKeySpecifier | (() => undefined | SenderKeySpecifier),
+		fields?: SenderFieldPolicy,
+	},
+	SimplePaginatorInfo?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | SimplePaginatorInfoKeySpecifier | (() => undefined | SimplePaginatorInfoKeySpecifier),
+		fields?: SimplePaginatorInfoFieldPolicy,
+	},
+	State?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | StateKeySpecifier | (() => undefined | StateKeySpecifier),
+		fields?: StateFieldPolicy,
+	},
+	StateReason?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | StateReasonKeySpecifier | (() => undefined | StateReasonKeySpecifier),
+		fields?: StateReasonFieldPolicy,
+	},
+	StatusType?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | StatusTypeKeySpecifier | (() => undefined | StatusTypeKeySpecifier),
+		fields?: StatusTypeFieldPolicy,
+	},
+	Ticket?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | TicketKeySpecifier | (() => undefined | TicketKeySpecifier),
+		fields?: TicketFieldPolicy,
+	},
+	TicketComments?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | TicketCommentsKeySpecifier | (() => undefined | TicketCommentsKeySpecifier),
+		fields?: TicketCommentsFieldPolicy,
+	},
+	TicketPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | TicketPaginatorKeySpecifier | (() => undefined | TicketPaginatorKeySpecifier),
+		fields?: TicketPaginatorFieldPolicy,
+	},
+	TicketStatus?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | TicketStatusKeySpecifier | (() => undefined | TicketStatusKeySpecifier),
+		fields?: TicketStatusFieldPolicy,
+	},
+	TransferIncoming?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | TransferIncomingKeySpecifier | (() => undefined | TransferIncomingKeySpecifier),
+		fields?: TransferIncomingFieldPolicy,
+	},
+	TransferIncomingHistory?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | TransferIncomingHistoryKeySpecifier | (() => undefined | TransferIncomingHistoryKeySpecifier),
+		fields?: TransferIncomingHistoryFieldPolicy,
+	},
+	TransferIncomingHistoryPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | TransferIncomingHistoryPaginatorKeySpecifier | (() => undefined | TransferIncomingHistoryPaginatorKeySpecifier),
+		fields?: TransferIncomingHistoryPaginatorFieldPolicy,
+	},
+	TransferIncomingPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | TransferIncomingPaginatorKeySpecifier | (() => undefined | TransferIncomingPaginatorKeySpecifier),
+		fields?: TransferIncomingPaginatorFieldPolicy,
+	},
+	TransferIncomingStatistic?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | TransferIncomingStatisticKeySpecifier | (() => undefined | TransferIncomingStatisticKeySpecifier),
+		fields?: TransferIncomingStatisticFieldPolicy,
+	},
+	TransferOutgoing?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | TransferOutgoingKeySpecifier | (() => undefined | TransferOutgoingKeySpecifier),
+		fields?: TransferOutgoingFieldPolicy,
+	},
+	TransferOutgoingHistory?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | TransferOutgoingHistoryKeySpecifier | (() => undefined | TransferOutgoingHistoryKeySpecifier),
+		fields?: TransferOutgoingHistoryFieldPolicy,
+	},
+	TransferOutgoingHistoryPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | TransferOutgoingHistoryPaginatorKeySpecifier | (() => undefined | TransferOutgoingHistoryPaginatorKeySpecifier),
+		fields?: TransferOutgoingHistoryPaginatorFieldPolicy,
+	},
+	TransferOutgoingPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | TransferOutgoingPaginatorKeySpecifier | (() => undefined | TransferOutgoingPaginatorKeySpecifier),
+		fields?: TransferOutgoingPaginatorFieldPolicy,
+	},
+	TransferOutgoingStatistic?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | TransferOutgoingStatisticKeySpecifier | (() => undefined | TransferOutgoingStatisticKeySpecifier),
+		fields?: TransferOutgoingStatisticFieldPolicy,
+	},
+	TwoFactorAuthSettings?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | TwoFactorAuthSettingsKeySpecifier | (() => undefined | TwoFactorAuthSettingsKeySpecifier),
+		fields?: TwoFactorAuthSettingsFieldPolicy,
+	},
+	TwoFactorAuthSettingsPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | TwoFactorAuthSettingsPaginatorKeySpecifier | (() => undefined | TwoFactorAuthSettingsPaginatorKeySpecifier),
+		fields?: TwoFactorAuthSettingsPaginatorFieldPolicy,
+	},
+	TwoFactorAuthToken?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | TwoFactorAuthTokenKeySpecifier | (() => undefined | TwoFactorAuthTokenKeySpecifier),
+		fields?: TwoFactorAuthTokenFieldPolicy,
+	},
+	TypeOfIndustry?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | TypeOfIndustryKeySpecifier | (() => undefined | TypeOfIndustryKeySpecifier),
+		fields?: TypeOfIndustryFieldPolicy,
+	},
+	TypeOfTransfer?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | TypeOfTransferKeySpecifier | (() => undefined | TypeOfTransferKeySpecifier),
+		fields?: TypeOfTransferFieldPolicy,
+	},
+	Users?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | UsersKeySpecifier | (() => undefined | UsersKeySpecifier),
+		fields?: UsersFieldPolicy,
+	},
+	UsersPaginator?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | UsersPaginatorKeySpecifier | (() => undefined | UsersPaginatorKeySpecifier),
+		fields?: UsersPaginatorFieldPolicy,
+	},
+	dashboardAccountsStatistic?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | dashboardAccountsStatisticKeySpecifier | (() => undefined | dashboardAccountsStatisticKeySpecifier),
+		fields?: dashboardAccountsStatisticFieldPolicy,
+	},
+	dashboardTicketsStatistic?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | dashboardTicketsStatisticKeySpecifier | (() => undefined | dashboardTicketsStatisticKeySpecifier),
+		fields?: dashboardTicketsStatisticFieldPolicy,
+	},
+	dashboardTransfersStatistic?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | dashboardTransfersStatisticKeySpecifier | (() => undefined | dashboardTransfersStatisticKeySpecifier),
+		fields?: dashboardTransfersStatisticFieldPolicy,
+	},
+	dashboardUsersStatistic?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | dashboardUsersStatisticKeySpecifier | (() => undefined | dashboardUsersStatisticKeySpecifier),
+		fields?: dashboardUsersStatisticFieldPolicy,
+	},
+	userAuthResponse?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | userAuthResponseKeySpecifier | (() => undefined | userAuthResponseKeySpecifier),
+		fields?: userAuthResponseFieldPolicy,
+	}
+};
+export type TypedTypePolicies = StrictTypedTypePolicies & TypePolicies;

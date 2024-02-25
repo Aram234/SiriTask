@@ -1,19 +1,31 @@
 import useAutocomplete from "@mui/material/useAutocomplete";
 import { CustomSelectComponents } from "./components";
 import { InfiniteScroll } from "../InfiniteScroll";
+import { useCallback, useState } from "react";
+import Typography from "@mui/material/Typography";
 
 export type SelectProps<T extends TagOption> = {
-  options: T[];
+  loadOptions: LoadFn<T>;
 };
 
-export function CustomSelect<T extends TagOption>({ options }: SelectProps<T>) {
+export function CustomSelect<T extends TagOption>({
+  loadOptions: _loadOptions,
+}: SelectProps<T>) {
+  const [state, setState] = useState<LoaderResult<T>>({
+    items: [],
+    hasMore: true,
+    nextPage: 1,
+  });
+
   const {
     getRootProps,
     getInputProps,
     getTagProps,
     getListboxProps,
     getOptionProps,
-    groupedOptions,
+    groupedOptions: _groupedOptions,
+    inputValue,
+    popupOpen,
     value,
     focused,
     setAnchorEl,
@@ -21,10 +33,26 @@ export function CustomSelect<T extends TagOption>({ options }: SelectProps<T>) {
     id: "customized-hook-demo",
     defaultValue: [],
     multiple: true,
-    open: true,
-    options,
+    options: state.items,
+    disableCloseOnSelect: true,
+    clearOnEscape: true,
     getOptionLabel: (o) => o.id, // this is the key for each menu item
   });
+
+  const groupedOptions = _groupedOptions as T[];
+
+  const loadOptions = useCallback(async () => {
+    const result = await _loadOptions({
+      nextPage: state.nextPage,
+      searchValue: inputValue,
+    });
+
+    setState((prev) => ({
+      hasMore: result.hasMore,
+      nextPage: result.nextPage,
+      items: [...prev.items, ...result.items],
+    }));
+  }, [_loadOptions, inputValue, state.nextPage]);
 
   return (
     <CustomSelectComponents.Root>
@@ -43,17 +71,11 @@ export function CustomSelect<T extends TagOption>({ options }: SelectProps<T>) {
           <input {...getInputProps()} />
         </CustomSelectComponents.InputWrapper>
       </div>
-      {groupedOptions.length > 0 ? (
+
+      {popupOpen && (
         <CustomSelectComponents.Listbox {...getListboxProps()}>
-          <InfiniteScroll
-            hasMore
-            onLoadMore={() => {
-              return new Promise((resolve) => {
-                setTimeout(() => resolve(5), 5000);
-              });
-            }}
-          >
-            {(groupedOptions as typeof options).map((option, index) => (
+          <InfiniteScroll hasMore={state.hasMore} onLoadMore={loadOptions}>
+            {groupedOptions.map((option, index) => (
               <li {...getOptionProps({ option, index })}>
                 <CustomSelectComponents.Tag
                   option={option}
@@ -62,8 +84,20 @@ export function CustomSelect<T extends TagOption>({ options }: SelectProps<T>) {
               </li>
             ))}
           </InfiniteScroll>
+
+          {!groupedOptions.length && !state.hasMore && (
+            <Typography
+              color="grey"
+              p="10px"
+              textAlign="center"
+              variant="h4"
+              component="h4"
+            >
+              No Options
+            </Typography>
+          )}
         </CustomSelectComponents.Listbox>
-      ) : null}
+      )}
     </CustomSelectComponents.Root>
   );
 }

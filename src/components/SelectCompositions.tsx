@@ -1,9 +1,12 @@
+import { useSelectorsOptionsLoadersContext } from "../hooks";
 import { CustomSelect } from "../ui";
 
 export function AICRelationsSelector() {
-  return <CustomSelect />;
+  const loaders = useSelectorsOptionsLoadersContext();
+  return <CustomSelect loadOptions={loaders.loadAICRelations} />;
 }
 
 export function AICPositionsSelector() {
-  return <CustomSelect />;
+  const loaders = useSelectorsOptionsLoadersContext();
+  return <CustomSelect loadOptions={loaders.loadAICPositions} />;
 }
