@@ -1,14 +1,12 @@
 import useAutocomplete from "@mui/material/useAutocomplete";
-import { CustomSelectComponents, TagBaseOption } from "./components";
+import { CustomSelectComponents } from "./components";
 import { InfiniteScroll } from "../InfiniteScroll";
 
-export type SelectProps<T extends TagBaseOption> = {
+export type SelectProps<T extends TagOption> = {
   options: T[];
 };
 
-export function CustomSelect<T extends TagBaseOption>({
-  options,
-}: SelectProps<T>) {
+export function CustomSelect<T extends TagOption>({ options }: SelectProps<T>) {
   const {
     getRootProps,
     getInputProps,
@@ -48,6 +46,7 @@ export function CustomSelect<T extends TagBaseOption>({
       {groupedOptions.length > 0 ? (
         <CustomSelectComponents.Listbox {...getListboxProps()}>
           <InfiniteScroll
+            hasMore
             onLoadMore={() => {
               return new Promise((resolve) => {
                 setTimeout(() => resolve(5), 5000);

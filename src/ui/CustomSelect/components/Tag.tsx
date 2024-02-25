@@ -2,18 +2,13 @@ import { styled } from "@mui/material/styles";
 import { AutocompleteGetTagProps } from "@mui/material/useAutocomplete";
 import CloseIcon from "@mui/icons-material/Close";
 
-export type TagBaseOption = {
-  id: string;
-  title: string;
-};
-
-export interface TagProps<T extends TagBaseOption = TagBaseOption>
+export interface TagProps<T extends TagOption = TagOption>
   extends ReturnType<AutocompleteGetTagProps> {
   option: T;
   isSelected?: boolean;
 }
 
-function TagBase<T extends TagBaseOption>(props: TagProps<T>) {
+function TagBase<T extends TagOption>(props: TagProps<T>) {
   const { option, isSelected, onDelete, ...other } = props;
 
   return (
