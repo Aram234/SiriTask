@@ -6,6 +6,7 @@ type LoaderProps = {
 type LoaderResult<T extends { id: string }> = {
   nextPage: number;
   hasMore: boolean;
+  searchValue: string;
   items: T[];
 };
 

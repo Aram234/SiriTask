@@ -7,7 +7,7 @@ import {
 import { iLike, serializeSelectorData } from "./utils";
 
 export const loadAICPositions = async ({
-  searchValue,
+  searchValue = "",
   nextPage,
 }: LoaderProps) => {
   const { data } = await apolloClient.query({
@@ -27,5 +27,10 @@ export const loadAICPositions = async ({
   const currentPage = data?.result?.paginatorInfo?.currentPage || -1;
   const items = data?.result?.data || [];
 
-  return serializeSelectorData({ hasMorePages, currentPage, items });
+  return serializeSelectorData({
+    hasMorePages,
+    currentPage,
+    searchValue,
+    items,
+  });
 };

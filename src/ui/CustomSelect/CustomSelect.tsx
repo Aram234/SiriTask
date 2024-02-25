@@ -1,21 +1,31 @@
 import useAutocomplete from "@mui/material/useAutocomplete";
 import { CustomSelectComponents } from "./components";
 import { InfiniteScroll } from "../InfiniteScroll";
-import { useCallback, useState } from "react";
+import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import Typography from "@mui/material/Typography";
+import { usePrevious } from "../../hooks";
+import { debounce } from "@mui/material/utils";
+
+export type FooterProps = { searchValue: string };
 
 export type SelectProps<T extends TagOption> = {
   loadOptions: LoadFn<T>;
+  Footer?: FC<FooterProps>;
 };
 
+const getOptionLabel = <T extends TagOption>(o: T) => o.id;
+const EmptyFooter: FC<FooterProps> = () => null;
+
 export function CustomSelect<T extends TagOption>({
-  loadOptions: _loadOptions,
+  loadOptions,
+  Footer = EmptyFooter,
 }: SelectProps<T>) {
-  const [state, setState] = useState<LoaderResult<T>>({
+  const [state, setState] = useState<LoaderResult<T>>(() => ({
     items: [],
     hasMore: true,
+    searchValue: "",
     nextPage: 1,
-  });
+  }));
 
   const {
     getRootProps,
@@ -23,36 +33,61 @@ export function CustomSelect<T extends TagOption>({
     getTagProps,
     getListboxProps,
     getOptionProps,
-    groupedOptions: _groupedOptions,
     inputValue,
     popupOpen,
     value,
     focused,
     setAnchorEl,
   } = useAutocomplete({
-    id: "customized-hook-demo",
-    defaultValue: [],
     multiple: true,
     options: state.items,
     disableCloseOnSelect: true,
-    clearOnEscape: true,
-    getOptionLabel: (o) => o.id, // this is the key for each menu item
+    getOptionLabel, // this is the key for each menu item
   });
 
-  const groupedOptions = _groupedOptions as T[];
+  const _onLoadMore = useCallback(
+    async (searchTerm?: string) => {
+      const searchValue = searchTerm ?? state.searchValue;
 
-  const loadOptions = useCallback(async () => {
-    const result = await _loadOptions({
-      nextPage: state.nextPage,
-      searchValue: inputValue,
-    });
+      const isSearchValueChanged = searchValue !== state.searchValue;
 
-    setState((prev) => ({
-      hasMore: result.hasMore,
-      nextPage: result.nextPage,
-      items: [...prev.items, ...result.items],
-    }));
-  }, [_loadOptions, inputValue, state.nextPage]);
+      const result = await loadOptions({
+        nextPage: isSearchValueChanged ? 1 : state.nextPage,
+        searchValue,
+      });
+
+      setState((prev) => {
+        if (result.searchValue === prev.searchValue) {
+          return {
+            hasMore: result.hasMore,
+            nextPage: result.nextPage,
+            searchValue: result.searchValue,
+            items: [...prev.items, ...result.items],
+          };
+        }
+
+        return {
+          hasMore: result.hasMore,
+          nextPage: result.nextPage,
+          searchValue: result.searchValue,
+          items: result.items,
+        };
+      });
+    },
+    [loadOptions, state.nextPage, state.searchValue]
+  );
+
+  const isEmpty = !state.items.length && !state.hasMore;
+
+  const prevInputValue = usePrevious(inputValue);
+
+  const onLoadMore = useMemo(() => debounce(_onLoadMore, 300), [_onLoadMore]);
+
+  useEffect(() => {
+    if (prevInputValue !== inputValue) {
+      onLoadMore(inputValue);
+    }
+  }, [inputValue, onLoadMore, prevInputValue]);
 
   return (
     <CustomSelectComponents.Root>
@@ -74,18 +109,20 @@ export function CustomSelect<T extends TagOption>({
 
       {popupOpen && (
         <CustomSelectComponents.Listbox {...getListboxProps()}>
-          <InfiniteScroll hasMore={state.hasMore} onLoadMore={loadOptions}>
-            {groupedOptions.map((option, index) => (
-              <li {...getOptionProps({ option, index })}>
-                <CustomSelectComponents.Tag
-                  option={option}
-                  {...getTagProps({ index })}
-                />
-              </li>
-            ))}
-          </InfiniteScroll>
+          <div style={{ maxHeight: 200, overflow: "auto" }}>
+            <InfiniteScroll hasMore={state.hasMore} onLoadMore={onLoadMore}>
+              {state.items.map((option, index) => (
+                <li {...getOptionProps({ option, index })}>
+                  <CustomSelectComponents.Tag
+                    option={option}
+                    {...getTagProps({ index })}
+                  />
+                </li>
+              ))}
+            </InfiniteScroll>
+          </div>
 
-          {!groupedOptions.length && !state.hasMore && (
+          {isEmpty && (
             <Typography
               color="grey"
               p="10px"
@@ -96,6 +133,8 @@ export function CustomSelect<T extends TagOption>({
               No Options
             </Typography>
           )}
+
+          <Footer searchValue={inputValue} />
         </CustomSelectComponents.Listbox>
       )}
     </CustomSelectComponents.Root>

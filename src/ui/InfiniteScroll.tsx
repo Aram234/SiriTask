@@ -16,6 +16,8 @@ export const InfiniteScroll = ({
   const isLoading = useRef<boolean>(false);
 
   const onIntersecting = useCallback(async () => {
+    console.log("onIntersecting", isLoading.current);
+
     if (isLoading.current) return;
 
     isLoading.current = true;
