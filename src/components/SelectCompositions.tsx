@@ -19,7 +19,11 @@ const Footer: FC<FooterProps> = ({ searchValue }) => {
 export function AICRelationsSelector() {
   const loaders = useSelectorsOptionsLoadersContext();
   return (
-    <CustomSelect loadOptions={loaders.loadAICRelations} Footer={Footer} />
+    <CustomSelect
+      isMultiple
+      loadOptions={loaders.loadAICRelations}
+      Footer={Footer}
+    />
   );
 }
 

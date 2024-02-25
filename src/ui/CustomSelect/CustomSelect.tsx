@@ -9,15 +9,18 @@ import { debounce } from "@mui/material/utils";
 export type FooterProps = { searchValue: string };
 
 export type SelectProps<T extends TagOption> = {
+  isMultiple?: boolean;
   loadOptions: LoadFn<T>;
   Footer?: FC<FooterProps>;
 };
 
-const getOptionLabel = <T extends TagOption>(o: T) => o.id;
+const getOptionLabel = () => "";
+const getOptionKey = <T extends TagOption>(o: T) => o.id;
 const EmptyFooter: FC<FooterProps> = () => null;
 
 export function CustomSelect<T extends TagOption>({
   loadOptions,
+  isMultiple,
   Footer = EmptyFooter,
 }: SelectProps<T>) {
   const [state, setState] = useState<LoaderResult<T>>(() => ({
@@ -39,10 +42,11 @@ export function CustomSelect<T extends TagOption>({
     focused,
     setAnchorEl,
   } = useAutocomplete({
-    multiple: true,
+    multiple: isMultiple,
     options: state.items,
-    disableCloseOnSelect: true,
-    getOptionLabel, // this is the key for each menu item
+    disableCloseOnSelect: isMultiple,
+    getOptionLabel,
+    getOptionKey,
   });
 
   const _onLoadMore = useCallback(
@@ -57,21 +61,12 @@ export function CustomSelect<T extends TagOption>({
       });
 
       setState((prev) => {
-        if (result.searchValue === prev.searchValue) {
-          return {
-            hasMore: result.hasMore,
-            nextPage: result.nextPage,
-            searchValue: result.searchValue,
-            items: [...prev.items, ...result.items],
-          };
-        }
+        const items =
+          result.searchValue === prev.searchValue
+            ? [...prev.items, ...result.items]
+            : result.items;
 
-        return {
-          hasMore: result.hasMore,
-          nextPage: result.nextPage,
-          searchValue: result.searchValue,
-          items: result.items,
-        };
+        return { ...result, items };
       });
     },
     [loadOptions, state.nextPage, state.searchValue]
@@ -84,10 +79,29 @@ export function CustomSelect<T extends TagOption>({
   const onLoadMore = useMemo(() => debounce(_onLoadMore, 300), [_onLoadMore]);
 
   useEffect(() => {
-    if (prevInputValue !== inputValue) {
+    if (typeof prevInputValue === "string" && prevInputValue !== inputValue) {
       onLoadMore(inputValue);
     }
   }, [inputValue, onLoadMore, prevInputValue]);
+
+  const renderSelectedTag = useCallback(
+    (option: T, index: number) => (
+      <CustomSelectComponents.Tag
+        isSelected={isMultiple}
+        option={option}
+        {...getTagProps({ index })}
+      />
+    ),
+    [getTagProps, isMultiple]
+  );
+
+  const valueJSX = useMemo(() => {
+    if (Array.isArray(value)) {
+      return value.length ? value.map(renderSelectedTag) : null;
+    }
+
+    return value ? renderSelectedTag(value, 0) : null;
+  }, [renderSelectedTag, value]);
 
   return (
     <CustomSelectComponents.Root>
@@ -96,13 +110,8 @@ export function CustomSelect<T extends TagOption>({
           ref={setAnchorEl}
           className={focused ? "focused" : ""}
         >
-          {value.map((option, index: number) => (
-            <CustomSelectComponents.Tag
-              isSelected={true}
-              option={option}
-              {...getTagProps({ index })}
-            />
-          ))}
+          {valueJSX}
+
           <input {...getInputProps()} />
         </CustomSelectComponents.InputWrapper>
       </div>
